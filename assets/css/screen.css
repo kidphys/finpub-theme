@@ -2138,19 +2138,19 @@ button[type="submit"]:hover {
   line-height: 26px;
 }
 @media (min-width: 1200px) {
-  .kg-width-wide {
+  .no-sidebar .kg-width-wide {
     margin-left: calc(-1000px / 2 + 100% / 2) !important;
     margin-right: calc(-1000px / 2 + 100% / 2) !important;
   }
-  .kg-width-wide img {
+  .no-sidebar .kg-width-wide img {
     max-width: 1000px;
   }
 }
-.kg-width-full {
+.no-sidebar .kg-width-full {
   margin-left: calc(-100vw / 2 + 100% / 2) !important;
   margin-right: calc(-100vw / 2 + 100% / 2) !important;
 }
-.kg-width-full img {
+.no-sidebar .kg-width-full img {
   width: 100vw;
 }
 .clearfix:before,
