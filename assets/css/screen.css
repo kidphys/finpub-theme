@@ -1316,7 +1316,6 @@ button[type="submit"]:hover {
 .slick-next {
   background: transparent;
   border: 2px solid #fff;
-  border-radius: 0;
   color: transparent;
   cursor: pointer;
   display: block;
@@ -1388,7 +1387,6 @@ button[type="submit"]:hover {
 }
 #navigation-bar .brand-logo {
   float: left;
-  max-height: 60px;
   position: absolute;
   top: 50%;
   -webkit-transition: opacity 0.2s ease;
@@ -1490,7 +1488,7 @@ button[type="submit"]:hover {
 }
 #hero #hero-mask {
   background-color: #333;
-  opacity: .4;
+  opacity: 0.4;
   position: absolute;
   top: 0;
   right: 0;
@@ -1643,12 +1641,12 @@ button[type="submit"]:hover {
 }
 .post .entry-meta .author-image {
   float: left;
-  margin-right: 7px;
   width: 35px;
   border-radius: 50%;
 }
 .post .entry-meta .right {
   float: left;
+  margin-left: 7px;
 }
 .post .entry-meta .right > span {
   display: inline-block;
@@ -2014,13 +2012,14 @@ button[type="submit"]:hover {
   margin-bottom: 90px;
 }
 #mondo-media-feed #media-feed-thumbnails {
+  margin-right: -10px;
+  margin-bottom: -10px;
   position: relative;
 }
 #mondo-media-feed .thumbnail {
-  background-position: center;
-  background-size: cover;
   display: block;
-  opacity: .8;
+  margin: -5px;
+  opacity: 0.8;
   position: absolute;
   width: 20%;
   -webkit-backface-visibility: hidden;
@@ -2029,11 +2028,6 @@ button[type="submit"]:hover {
   -webkit-transition: opacity 0.2s ease;
   -o-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
-}
-#mondo-media-feed .thumbnail:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
 }
 #mondo-media-feed .thumbnail:hover {
   opacity: 1;
@@ -2057,6 +2051,10 @@ button[type="submit"]:hover {
 #mondo-media-feed .thumbnail:nth-child(5),
 #mondo-media-feed .thumbnail:nth-child(7) {
   top: 50%;
+}
+#mondo-media-feed .thumbnail-inner {
+  display: block;
+  margin: 5px;
 }
 #colophon {
   background-color: #333;
@@ -2138,6 +2136,22 @@ button[type="submit"]:hover {
 }
 #colophon .social-links li > a {
   line-height: 26px;
+}
+@media (min-width: 1200px) {
+  .kg-width-wide {
+    margin-left: calc(-1000px / 2 + 100% / 2) !important;
+    margin-right: calc(-1000px / 2 + 100% / 2) !important;
+  }
+  .kg-width-wide img {
+    max-width: 1000px;
+  }
+}
+.kg-width-full {
+  margin-left: calc(-100vw / 2 + 100% / 2) !important;
+  margin-right: calc(-100vw / 2 + 100% / 2) !important;
+}
+.kg-width-full img {
+  width: 100vw;
 }
 .clearfix:before,
 .clearfix:after,
@@ -2439,7 +2453,16 @@ button[type="submit"]:hover {
   }
 }
 @media (max-width: 767px) {
-  
+  #mondo-media-feed .thumbnails {
+    margin-right: -4px;
+    margin-bottom: -4px;
+  }
+  #mondo-media-feed .thumbnail {
+    margin: -2px;
+  }
+  #mondo-media-feed .thumbnail-inner {
+    margin: 2px;
+  }
 }
 @media (max-width: 991px) {
   #navigation-bar #main-navigation {
