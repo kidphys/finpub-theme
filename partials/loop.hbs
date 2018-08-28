@@ -11,9 +11,9 @@
 	{{/if}}
 	<div class="entry-content">
 		<div class="entry-meta clearfix">
-			{{#if author.profile_image}}<img class="author-image" src="{{img_url author.profile_image}}" alt="{{author.name}}">{{/if}}
+			{{#if primary_author.profile_image}}<img class="author-image" src="{{img_url primary_author.profile_image}}" alt="{{primary_author.name}}">{{/if}}
 			<div class="right">
-				<span class="author-name">{{author}}</span>
+				<span class="author-name">{{primary_author.name}}</span>
 				<span class="entry-date" title="{{date format="DD MMMM YYYY"}}"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time></span>
 				<span class="entry-share">
 					<i class="fa fa-share-alt"></i>
