@@ -1,0 +1,30 @@
+.social-links {
+	list-style-type: none;
+	margin: 0;
+  padding: 0;
+  position: relative;
+  vertical-align: middle;
+
+  li {
+  	display: inline-block;
+
+  	& > a {
+  		border: 2px solid @social-icon-border-color;
+  		color: @social-icon-color !important;
+	    display: block;
+	    font-size: @social-icon-font-size;
+	    line-height: @social-icon-line-height;
+	    margin-left: 4px;
+	    text-align: center;
+	    width: @social-icon-width;
+	    height: @social-icon-height;
+	    .circle-border;
+	    .transition(all @animation-base);
+
+	    &:hover {
+	    	background-color: @social-icon-hover-bg-color;
+	    	color: @social-icon-hover-color !important;
+	    }
+  	}
+  }
+}

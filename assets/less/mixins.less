@@ -1,0 +1,96 @@
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.animation(@animation) {
+  -webkit-animation: @animation;
+       -o-animation: @animation;
+          animation: @animation;
+}
+.animation-delay(@delay) {
+  -webkit-animation-delay: @delay;
+          animation-delay: @delay;
+}
+.appearance(@appearance) {
+  -webkit-appearance: @appearance;
+     -moz-appearance: @appearance;
+}
+.backface-visibility(@visibility){
+  -webkit-backface-visibility: @visibility;
+     -moz-backface-visibility: @visibility;
+          backface-visibility: @visibility;
+}
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+          box-shadow: @shadow;
+}
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+.rotate(@degrees) {
+  -webkit-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees); // IE9 only
+       -o-transform: rotate(@degrees);
+          transform: rotate(@degrees);
+}
+.touch-action(@action) {
+  -ms-touch-action: @action;
+      touch-action: @action;
+}
+.transition(@transition) {
+  -webkit-transition: @transition;
+       -o-transition: @transition;
+          transition: @transition;
+}
+.transition-delay(@transition-delay) {
+  -webkit-transition-delay: @transition-delay;
+          transition-delay: @transition-delay;
+}
+.transition-transform(@transitionArguments) {
+  -webkit-transition: -webkit-transform @transitionArguments;
+       -o-transition: -o-transform @transitionArguments;
+          transition: transform @transitionArguments;
+}
+.translate(@x; @y) {
+  -webkit-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y); // IE9 only
+       -o-transform: translate(@x, @y);
+          transform: translate(@x, @y);
+}
+.translateX(@x) {
+  -webkit-transform: translateX(@x);
+      -ms-transform: translateX(@x); // IE9 only
+       -o-transform: translateX(@x);
+          transform: translateX(@x);
+}
+.translateY(@y) {
+  -webkit-transform: translateY(@y);
+      -ms-transform: translateY(@y); // IE9 only
+       -o-transform: translateY(@y);
+          transform: translateY(@y);
+}
+.translateZ(@z) {
+  -webkit-transform: translateZ(@z);
+      -ms-transform: translateZ(@z); // IE9 only
+       -o-transform: translateZ(@z);
+          transform: translateZ(@z);
+}
+.translate3d(@x; @y; @z) {
+  -webkit-transform: translate3d(@x, @y, @z);
+          transform: translate3d(@x, @y, @z);
+}
+.user-select(@select) {
+  -webkit-user-select: @select;
+     -moz-user-select: @select;
+      -ms-user-select: @select; // IE10+
+          user-select: @select;
+}

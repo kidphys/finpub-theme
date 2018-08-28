@@ -1,0 +1,28 @@
+#related-posts {
+	.related-post {
+		margin-top: 60px;
+	}
+	
+	.entry-media {
+		background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    height: 0;
+    margin-bottom: 15px;
+    padding-bottom: 60%;
+	}
+
+	.entry-title {
+		font-size: @related-title-font-size;
+		margin-bottom: 15px;
+
+		& > a {
+			color: @related-title-text-color;
+
+			&:hover {
+				color: @related-title-hover-text-color;
+			}
+		}
+	}
+}

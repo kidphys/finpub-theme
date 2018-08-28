@@ -1,0 +1,49 @@
+#mondo-media-feed {
+	margin-bottom: 90px;
+
+	#media-feed-thumbnails {
+		margin-right: -@_media-feed-gap;
+		margin-bottom: -@_media-feed-gap;
+		position: relative;
+	}
+
+	.thumbnail {
+	  display: block;
+	  margin: -(@_media-feed-gap / 2);
+	  opacity: .8;
+	  position: absolute;
+	  width: 20%;
+	  .backface-visibility(hidden);
+		.transition(opacity @animation-base);
+
+		&:hover {
+			opacity: 1;
+		}
+
+		img {
+			width: 100%;
+		}
+	}
+	.thumbnail:nth-child(3) {
+	  width: 40%;
+	  left: 20%;
+	}
+	.thumbnail:nth-child(4),
+	.thumbnail:nth-child(5) {
+	  left: 60%;
+	}
+	.thumbnail:nth-child(6),
+	.thumbnail:nth-child(7) {
+	  left: 80%;
+	}
+	.thumbnail:nth-child(2),
+	.thumbnail:nth-child(5),
+	.thumbnail:nth-child(7) {
+	  top: 50%;
+	}
+
+	.thumbnail-inner {
+		display: block;
+		margin: (@_media-feed-gap / 2);
+	}
+}

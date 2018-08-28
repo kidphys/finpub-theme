@@ -1,0 +1,161 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  background-color: @body-bg-color;
+  color: @text-color;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  padding-top: @navbar-height;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  letter-spacing: @headings-letter-spacing;
+  line-height: @headings-line-height;
+  margin: 0 0 10px;
+}
+h1 { font-size: @font-size-h1; }
+h2 { font-size: @font-size-h2; }
+h3 { font-size: @font-size-h3; }
+h4 { font-size: @font-size-h4; }
+h5 { font-size: @font-size-h5; }
+h6 { font-size: @font-size-h6; }
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+p {
+  margin: 0 0 20px;
+}
+
+blockquote {
+  color: @blockquote-text-color;
+  font-size: @blockquote-font-size;
+  margin: 40px 0;
+  padding-left: 40px;
+  position: relative;
+
+  &:before {
+    content: "\f10d";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+a {
+  color: @link-color;
+  text-decoration: none;
+  .transition(color @animation-base);
+}
+a:hover {
+  color: @link-hover-color;
+  text-decoration: none;
+}
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+iframe,
+embed {
+  border: 0;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+table {
+  margin-bottom: 20px;
+}
+th, td {
+  border: 1px solid @table-border-color;
+  padding: 5px 12px;
+}
+
+dl, ul, ol {
+  margin: 20px 0;
+  padding-left: 30px;
+
+  dl, ul, ol {
+    margin: 0;
+  }
+}
+dl {
+  padding-left: 20px;
+}
+dt {
+  font-weight: @dt-font-weight;
+}
+dd {
+  margin: 0 0 20px 0;
+}
+
+hr {
+  background-color: @hr-bg-color;
+  border: 0;
+  margin: 40px auto;
+  width: @hr-width;
+  height: @hr-height;
+}
+
+code, pre {
+  background-color: @code-bg-color;
+  border: 1px solid @code-border-color;
+}
+code {
+  padding: 2px;
+}
+pre {
+  padding: 15px 20px;
+
+  code {
+    border: 0;
+  }
+}
+
+mark {
+  background-color: @mark-bg-color;
+}
+
+[role="button"] {
+  cursor: pointer;
+}

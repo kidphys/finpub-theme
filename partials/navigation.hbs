@@ -1,0 +1,18 @@
+<header id="masthead">
+	<div id="navigation-bar" class="clearfix">
+		{{#if @blog.logo}}<a href="{{@blog.url}}"><img class="brand-logo dark" src="{{@blog.logo}}" alt="{{@blog.title}}"></a>{{/if}}
+		<div id="mobile-nav-toggle" class="hidden-md hidden-lg">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+		<ul class="social-links"></ul>
+		<nav id="main-navigation">
+			<ul class="nav-list clearfix">
+				{{#foreach navigation}}
+          <li class="menu-item nav-{{slug}}{{#if current}} nav-current{{/if}}" role="presentation"><a href="{{url absolute="true"}}">{{label}}</a></li>
+        {{/foreach}}
+			</ul>
+		</nav>
+	</div>
+</header>

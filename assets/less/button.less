@@ -1,0 +1,17 @@
+.button {
+  background-color: @button-bg-color;
+  border: 0;
+  color: @button-text-color;
+  display: inline-block;
+  font-family: @button-font-family;
+  font-size: @button-font-size;
+  font-weight: @button-font-weight;
+  letter-spacing: @button-letter-spacing;
+  padding: 5px 12px;
+  text-transform: uppercase;
+  .transition(background-color @animation-base);
+
+  &:hover {
+  	background-color: @button-hover-bg-color;
+  }
+}

@@ -1,0 +1,97 @@
+.widget {
+	font-size: @widget-font-size;
+	margin-bottom: 60px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		li > a {
+			color: @widget-item-text-color;
+			font-family: @widget-item-font-family;
+
+			&:hover {
+				color: @widget-item-hover-text-color;
+			}
+		}
+	}
+
+	.widget-title {
+		border-bottom: 2px solid @widget-title-border-color;
+		font-size: @widget-title-font-size;
+		margin-bottom: 30px;
+    padding-bottom: 15px;
+    position: relative;
+    text-transform: uppercase;
+
+    &:after {
+    	background-color: @widget-title-sep-bg-color;
+    	content: "";
+	    position: absolute;
+	    bottom: -2px;
+	    left: 0;
+	    width: @widget-title-sep-width;
+	    height: @widget-title-sep-height;
+	    .transition(width @animation-base);
+    }
+	}
+
+	&:hover .widget-title:after {
+		width: @widget-title-sep-hover-width;
+	}
+
+	&.widget-posts-list {
+		.posts > li {
+			margin-bottom: 20px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.thumbnail-link {
+			background-color: @widget-posts-list-thumbnail-bg-color;
+			color: @widget-posts-list-thumbnail-text-color;
+			display: block;
+			float: left;
+			font-family: @widget-posts-list-thumbnail-font-family;
+			font-size: @widget-posts-list-thumbnail-font-size;
+			line-height: @widget-posts-list-thumbnail-line-height;
+			text-align: center;
+			width: @widget-posts-list-thumbnail-width;
+			height: @widget-posts-list-thumbnail-height;
+			.transition(background-color @animation-base);
+
+			&:hover {
+				background-color: @widget-posts-list-thumbnail-hover-bg-color;
+			}
+		}
+
+		.entry-content {
+			margin: -1px 0 0 (@widget-posts-list-thumbnail-width + 15);
+		}
+
+		.entry-title {
+			font-size: @widget-posts-list-title-font-size;
+			margin-bottom: 2px;
+
+			& > a {
+				color: @widget-posts-list-title-text-color;
+
+				&:hover {
+					color: @widget-posts-list-title-hover-text-color;
+				}
+			}
+		}
+
+		.entry-date {
+	    font-family: @widget-posts-list-meta-font-family;
+	    font-size: @widget-posts-list-meta-font-size;
+		}
+	}
+}

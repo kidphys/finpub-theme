@@ -1,0 +1,128 @@
+.slick-slider {
+  display: block;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  .touch-action(pan-y);
+  .user-select(none);
+
+  &.slick-initialized {
+    opacity: 1 !important;
+    position: relative !important;
+  }
+}
+
+.slick-list {
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+.slick-list:focus {
+  outline: none;
+}
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  .translate3d(0, 0, 0);
+}
+
+.slick-track {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  .clearfix();
+}
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+[dir='rtl'] .slick-slide {
+  float: right;
+}
+.slick-slide.slick-loading img {
+  display: none;
+}
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+.slick-initialized .slick-slide {
+  display: block;
+}
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+.slick-vertical .slick-slide {
+  border: 1px solid transparent;
+  display: block;
+  height: auto;
+}
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+.slick-prev,
+.slick-next {
+  background: transparent;
+  border: 2px solid @slick-nav-border-color;
+  color: transparent;
+  cursor: pointer;
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  bottom: 40px;
+  width: @slick-nav-width;
+  height: @slick-nav-height;
+  z-index: @slick-nav-zindex;
+  .transition(background-color @animation-base);
+
+  &:before {
+    content: "\f053";
+    font-family: FontAwesome;
+    color: @slick-nav-icon-color;
+    font-size: @slick-nav-icon-font-size;
+    line-height: @slick-nav-height;
+  }
+}
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  background: @slick-nav-hover-bg-color;
+  color: transparent;
+  outline: none;
+}
+
+.slick-prev {
+  left: 40px;
+}
+.slick-next {
+  right: 40px;
+
+  &:before {
+    content: "\f054";
+  }
+}
+[dir='rtl'] .slick-prev {
+  right: 40px;
+  left: auto;
+}
+[dir='rtl'] .slick-next {
+  right: auto;
+  left: 40px;
+}

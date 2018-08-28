@@ -1,0 +1,29 @@
+.navigation.post-navigation {
+	margin-top: 90px;
+	.clearfix();
+
+	.nav-previous {
+		float: right;
+	}
+
+	.nav-next {
+		float: left;
+	}
+
+	.nav-previous > a,
+	.nav-next > a {
+		background-color: @nav-bg-color;
+    color: @nav-text-color;
+		display: block;
+    font-family: @nav-font-family;
+    font-size: @nav-font-size;
+    font-weight: @nav-font-weight;
+    padding: 5px 12px;
+    text-transform: uppercase;
+    .transition(background-color @animation-base);
+
+    &:hover {
+    	background-color: @nav-hover-bg-color;
+    }
+	}
+}

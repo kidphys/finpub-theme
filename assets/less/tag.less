@@ -1,0 +1,26 @@
+.cat-links {
+  display: block;
+  .clearfix();
+  
+  & > a {
+    background-color: @tag-bg-color;
+    color: @tag-text-color;
+    display: inline-block;
+    float: left;
+    font-family: @tag-font-family;
+    font-size: @tag-font-size;
+    font-weight: @tag-font-weight;
+    margin: 0 4px 4px 0;
+    padding: 2px 8px;
+    .transition(background-color @animation-base);
+
+    &[href="/tag/no-image/"],
+    &[href="/tag/no-image"] {
+      display: none;
+    }
+
+    &:hover {
+      background-color: @tag-hover-bg-color;
+    }
+  }
+}

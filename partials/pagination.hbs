@@ -1,0 +1,14 @@
+<nav class="navigation post-navigation">
+	<div class="nav-links">
+		{{#if next}}
+		<div class="nav-previous">
+			<a href="{{page_url next}}">Older Posts</a>
+		</div>
+		{{/if}}
+		{{#if prev}}
+		<div class="nav-next">
+			<a href="{{page_url prev}}">Newer Posts</a>
+		</div>
+		{{/if}}
+	</div>
+</nav>

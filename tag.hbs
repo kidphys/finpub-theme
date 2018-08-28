@@ -1,0 +1,25 @@
+{{!< default}}
+
+<div id="hero"{{#if tag.feature_image}} style="background-image: url('{{tag.feature_image}}')"{{/if}}>
+	<div id="hero-mask"></div>
+	<div class="hero-content">
+		<h1 class="hero-title"><i class="fa fa-tag"></i> {{tag.name}}</h1>
+		<div class="hero-description">{{tag.description}}</div>
+	</div>
+</div>
+
+<div id="content" class="container">
+ 	<div class="row">
+ 		<div class="col-md-8">
+ 			<div id="primary" class="content-area">
+ 				<main id="main" class="site-main">
+ 					{{> loop}}
+ 				</main>
+ 			</div>
+ 		</div>
+
+ 		<div class="col-md-4">
+ 			{{> sidebar}}
+ 		</div>
+ 	</div>
+</div>
