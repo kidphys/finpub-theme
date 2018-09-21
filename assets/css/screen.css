@@ -2017,6 +2017,8 @@ button[type="submit"]:hover {
   position: relative;
 }
 #mondo-media-feed .thumbnail {
+  background-position: center;
+  background-size: cover;
   display: block;
   margin: -5px;
   opacity: 0.8;
@@ -2028,6 +2030,11 @@ button[type="submit"]:hover {
   -webkit-transition: opacity 0.2s ease;
   -o-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
+}
+#mondo-media-feed .thumbnail:before {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
 }
 #mondo-media-feed .thumbnail:hover {
   opacity: 1;
