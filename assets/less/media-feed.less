@@ -8,6 +8,8 @@
 	}
 
 	.thumbnail {
+		background-position: center;
+		background-size: cover;
 	  display: block;
 	  margin: -(@_media-feed-gap / 2);
 	  opacity: .8;
@@ -15,6 +17,12 @@
 	  width: 20%;
 	  .backface-visibility(hidden);
 		.transition(opacity @animation-base);
+
+		&:before {
+			content: "";
+			display: block;
+			padding-bottom: 100%;
+		}
 
 		&:hover {
 			opacity: 1;
