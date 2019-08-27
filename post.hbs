@@ -43,15 +43,17 @@
 					</article>
 					{{#has tag="#paid"}}
 					<div id="payment">
-						<div class="payment">
-							<p>This is the payment information for this post</p>
-						</div>
 						<section class="section">
-							<div class="container">
+							<div class="is-fluid">
 								<div class="columns">
 									<div class="column">
 										<div class="card">
 											<div class="card-content">
+												<div class="payment">
+													<br>
+													<p>Đây là bài viết có nội dung trả tiền, vui lòng thanh toán theo các thông tin hướng dẫn dưới đây</p>
+													<p class="is-size-5 has-text-grey-light">Ngay sau khi nhận được thanh toán, chúng tôi sẽ gửi xác nhận vào email của bạn.</p>
+												</div>
 												<div class="tabs">
 												<ul>
 													<li data-payment-type="momo" class="is-active" onclick="return changePaymentType(event)">
@@ -66,11 +68,6 @@
 													</li>
 												</ul>
 												</div>
-									<!--
-									<ul class="nav nav-tabs">
-									<li role="paymenttype" data-payment-type="Card" class="active" onclick="return changePaymentType(event)"><a href="#">Card</a></li>
-									<li role="paymenttype" data-payment-type="Transfer" onclick="return changePaymentType(event)"><a href="#">Bank Transfer</a></li>
-									</ul>-->
 												<div class="payment-body transfer-payment hidden" data-payment-type="transfer">
 													<div class="level is-size-6">
 														Chuyển khoản với nội dung sau
@@ -109,7 +106,12 @@
 														<div class="level-left">
 															<div class="">
 																<p class="bank_transfer__label is-size-6 has-text-grey-light">Số tiền</p>
+																{{#has tag="#39k"}}
 																<p class="bank_transfer__value is-size-5">39k</p>
+																{{/has}}
+																{{#has tag="#49k"}}
+																<p class="bank_transfer__value is-size-5">49k</p>
+																{{/has}}
 															</div>
 														</div>
 													</div>
@@ -119,12 +121,12 @@
 															<div class="">
 																<p class="bank_transfer__label is-size-6 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
 																<p class="bank_transfer__value is-size-5 has-text-weight-bold">
-																	Mua post ID số tiền
+																	Mua {{id}}
 																</p>
 															</div>
 														</div>
 														<div class="level-right">
-															<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy" onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a>
+															<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a>
 														</div>
 													</div>
 												</div>
@@ -144,6 +146,7 @@
 																</div>
 																<div class="level-right"><!--
 																	<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a> -->
+																	<img src="https://momo.com/myqr" class="image" />
 																</div>
 															</div>
 															<div class="level">
@@ -161,7 +164,12 @@
 																<div class="level-left">
 																	<div class="">
 																		<p class="bank_transfer__label is-size-6 has-text-grey-light">Số tiền</p>
+																		{{#has tag="#39k"}}
 																		<p class="bank_transfer__value is-size-5">39k</p>
+																		{{/has}}
+																		{{#has tag="#49k"}}
+																		<p class="bank_transfer__value is-size-5">49k</p>
+																		{{/has}}
 																	</div>
 																</div>
 															</div>
@@ -171,7 +179,7 @@
 																	<div class="">
 																		<p class="bank_transfer__label is-size-6 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
 																		<p class="bank_transfer__value is-size-5 has-text-weight-bold">
-																			Mua post_id qua MOMO
+																			Mua {{id}} qua MOMO
 																		</p>
 																	</div>
 																</div>
@@ -179,9 +187,6 @@
 																	<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a>
 																</div>
 															</div>
-														</div>
-														<div class="column">
-															<img src="https://momo.com/myqr" class="image" />
 														</div>
 													</div>
 													<input id="clipboard" style="position: absolute; left: -9999px" readonly />
