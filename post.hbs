@@ -41,7 +41,159 @@
 							{{content}}
 						</div>
 					</article>
+					{{#has tag="#paid"}}
+					<div id="payment">
+						<div class="payment">
+							<p>This is the payment information for this post</p>
+						</div>
+						<section class="section">
+							<div class="container">
+								<div class="columns">
+									<div class="column">
+										<div class="card">
+											<div class="card-content">
+												<div class="tabs">
+												<ul>
+													<li data-payment-type="momo" class="is-active" onclick="return changePaymentType(event)">
+														<a>Momo</a>
+													</li>
+													<li  data-payment-type="transfer" onclick="return changePaymentType(event)">
+														<a>Chuyển khoản</a>
+													</li>
 
+													<li data-payment-type="card" class="hidden" onclick="return changePaymentType(event)">
+														<a>Card</a>
+													</li>
+												</ul>
+												</div>
+									<!--
+									<ul class="nav nav-tabs">
+									<li role="paymenttype" data-payment-type="Card" class="active" onclick="return changePaymentType(event)"><a href="#">Card</a></li>
+									<li role="paymenttype" data-payment-type="Transfer" onclick="return changePaymentType(event)"><a href="#">Bank Transfer</a></li>
+									</ul>-->
+												<div class="payment-body transfer-payment hidden" data-payment-type="transfer">
+													<div class="level is-size-6">
+														Chuyển khoản với nội dung sau
+													</div>
+													<div class="level">
+														<div class="level-left">
+															<div class="">
+																<p class="bank_transfer__label is-size-6 has-text-grey">Số tài khoản</p>
+																<p class="bank_transfer__value is-size-5">0123557686896</p>
+															</div>
+														</div>
+														<div class="level-right">
+															<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy" onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a>
+														</div>
+													</div>
+													<div class="level">
+														<div class="level-left">
+															<div class="">
+																<p class="bank_transfer__label is-size-6 has-text-grey">Tên chủ tài khoản</p>
+																<p class="bank_transfer__value is-size-5">Hoàng Minh Châu</p>
+															</div>
+														</div>
+														<div class="level-right">
+															<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a>
+														</div>
+													</div>
+													<div class="level">
+														<div class="level-left">
+															<div class="">
+																<p class="bank_transfer__label is-size-6 has-text-grey">Ngân hàng</p>
+																<p class="bank_transfer__value is-size-5">BIDV</p>
+															</div>
+														</div>
+													</div>
+													<div class="level">
+														<div class="level-left">
+															<div class="">
+																<p class="bank_transfer__label is-size-6 has-text-grey-light">Số tiền</p>
+																<p class="bank_transfer__value is-size-5">39k</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="level">
+														<div class="level-left">
+															<div class="">
+																<p class="bank_transfer__label is-size-6 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
+																<p class="bank_transfer__value is-size-5 has-text-weight-bold">
+																	Mua post ID số tiền
+																</p>
+															</div>
+														</div>
+														<div class="level-right">
+															<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy" onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a>
+														</div>
+													</div>
+												</div>
+												<div class="payment-body momo-payment " data-payment-type="momo">
+													<div class="level is-size-6">
+														Mở app MoMo, quét mã QR hoặc nhập số điện thoại phía dưới để thanh toán.
+													</div>
+
+													<div class="columns">
+														<div class="column">
+															<div class="level">
+																<div class="level-left">
+																	<div class="">
+																		<p class="bank_transfer__label is-size-6 has-text-grey">Người nhận</p>
+																		<p class="bank_transfer__value is-size-5">Vũ Minh Tâm</p>
+																	</div>
+																</div>
+																<div class="level-right"><!--
+																	<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a> -->
+																</div>
+															</div>
+															<div class="level">
+																<div class="level-left">
+																	<div class="">
+																		<p class="bank_transfer__label is-size-6 has-text-grey">Số điện thoại</p>
+																		<p class="bank_transfer__value is-size-5">0915865558</p>
+																	</div>
+																</div>
+																<div class="level-right">
+																	<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a>
+																</div>
+															</div>
+															<div class="level">
+																<div class="level-left">
+																	<div class="">
+																		<p class="bank_transfer__label is-size-6 has-text-grey-light">Số tiền</p>
+																		<p class="bank_transfer__value is-size-5">39k</p>
+																	</div>
+																</div>
+															</div>
+
+															<div class="level">
+																<div class="level-left">
+																	<div class="">
+																		<p class="bank_transfer__label is-size-6 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
+																		<p class="bank_transfer__value is-size-5 has-text-weight-bold">
+																			Mua post_id qua MOMO
+																		</p>
+																	</div>
+																</div>
+																<div class="level-right">
+																	<a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a>
+																</div>
+															</div>
+														</div>
+														<div class="column">
+															<img src="https://momo.com/myqr" class="image" />
+														</div>
+													</div>
+													<input id="clipboard" style="position: absolute; left: -9999px" readonly />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+					{{/has}}
 					<div id="about-author">
 						<div class="author-image">
 							<img src="{{img_url primary_author.profile_image}}" alt="{{primary_author.name}}">

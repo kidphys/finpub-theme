@@ -10,10 +10,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="shortcut icon" href="{{asset "/favicon.ico"}}">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
 	<link rel="stylesheet" href="{{asset "css/screen.css"}}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CUbuntu:400,700">
+	<style>
+		.hidden {
+			display: none !important;
+			visibility: hidden !important;
+		}
+	</style>
 
 	<script>
 		{{> config}}
@@ -48,7 +55,60 @@
 	<script src="{{asset "js/jquery.ghostrelated.min.js"}}"></script>
 	<script src="{{asset "js/instafeed.min.js"}}"></script>
 	<script src="{{asset "js/functions.js"}}"></script>
-	
+	<script type="text/javascript">
+		function changePaymentType(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			if (e.currentTarget.className.indexOf('is-active') < 0) {
+				// set it as active.
+				var dom = e.currentTarget,
+					parent = e.currentTarget.parentElement,
+					active = parent.querySelector('.is-active');
+				active.className = active.className.replace('is-active', '');
+				dom.className += ' is-active';
+				var payType = dom.dataset['paymentType'];
+				var allPayments = document.querySelectorAll('.payment-body');
+				for (var i = 0; i < allPayments.length; i++) {
+					var p = allPayments[i];
+					// if (p.className.indexOf(payType.toLowerCase()) < 0)
+					//     p.style.display = 'none';
+					// else
+					//     p.style.display = 'block';
+					if (p.dataset['paymentType'] === payType) {
+						p.className = p.className.replace('hidden');
+					}
+					else {
+						if (p.className.indexOf('hidden') < 0)
+							p.className += ' hidden';
+					}
+				}
+				// Update the value of payment type
+				var payTypeInput = document.getElementById('id_payment_type');
+				payTypeInput.value = payType;
+			}
+			return false;
+		}
+
+		function copyToClipboard(val) {
+			console.log('copy to clipboard', val)
+			var dom = document.getElementById('clipboard');
+			dom.value = val;
+			dom.select();
+			document.execCommand('copy');
+			console.log('done copy');
+		}
+
+		function copyText(event) {
+			event.stopPropagation();
+			event.preventDefault();
+			var dom = event.currentTarget,
+				parent = dom.parentElement.parentElement;
+
+			var contentNode = parent.querySelector('.bank_transfer__value');
+			copyToClipboard(contentNode.innerText);
+			return false;
+		}
+	</script>
 	{{> facebook}}
 	{{> disqus}}
 
