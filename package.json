@@ -1,6 +1,9 @@
 {
   "name": "lark",
-  "version": "2.1.1",
+  "version": "2.1.2",
+  "engines": {
+    "ghost-api": "v2"
+},
   "author": {
     "name": "MondoTheme",
     "email": "mondotheme@gmail.com"

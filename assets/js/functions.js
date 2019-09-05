@@ -8,7 +8,7 @@ var mask = $( '#hero-mask' );
 var heroHeight = $( '#hero' ).outerHeight();
 
 jQuery( document ).ready( function( $ ) {
-	
+
 	( function() {
 		'use strict';
 
@@ -95,7 +95,7 @@ function hideNavbar() {
 	'use strict';
 
 	var st = $( window ).scrollTop();
-    
+
   if ( Math.abs( lastScrollTop - st ) <= delta ) {
     return;
   }
@@ -107,7 +107,7 @@ function hideNavbar() {
   		navbar.addClass( 'transparent' );
   	}
   }
-  
+
   if ( st > lastScrollTop && st > navbarHeight * 4 ) {
     navbar.addClass( 'up' );
   } else {
@@ -115,7 +115,7 @@ function hideNavbar() {
       navbar.removeClass( 'up' );
     }
   }
-  
+
   lastScrollTop = st;
 }
 
@@ -167,11 +167,45 @@ function initFeaturedPosts( $ ) {
 	'use strict';
 
 	var wrapper = $( '#featured-posts' );
+
+	wrapper.slick( {
+		infinite: true,
+		slidesToShow: 4,
+		slidesToScroll: 4,
+		responsive: [
+		{
+			breakpoint: 992,
+			settings: {
+			slidesToShow: 3,
+			slidesToScroll: 3
+			}
+		},
+		{
+			breakpoint: 768,
+			settings: {
+			slidesToShow: 2,
+			slidesToScroll: 2
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1
+			}
+		}
+		]
+	} );
+
+	// call _oldInitFeaturedPosts(mondoOptions) for old code
+}
+
+function _oldInitFeaturedPosts(mondoOptions) {
 	var results = [];
 	var index, response, bg, tags;
 	var output = '';
-
 	if ( mondoOptions.slider_items.length > 0 ) {
+
 		for ( index in mondoOptions.slider_items ) {
 			results.push( fetch( mondoOptions.slider_items[ index ] ) );
 		}
@@ -206,7 +240,7 @@ function initFeaturedPosts( $ ) {
 			}
 
 			wrapper.html( output );
-			
+
 			wrapper.slick( {
 				infinite: true,
 			  slidesToShow: 4,
@@ -239,6 +273,7 @@ function initFeaturedPosts( $ ) {
 	} else {
 		wrapper.remove();
 	}
+
 }
 
 function initTopStories( $ ) {
@@ -301,10 +336,10 @@ function openPopup( url, title, w, h ) {
 
   var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
   var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
-          
+
   var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
   var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
-          
+
   var left = ( ( width / 2 ) - ( w / 2 ) ) + dualScreenLeft;
   var top = ( ( height / 2 ) - ( h / 2 ) ) + dualScreenTop;
   var newWindow = window.open( url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left );
@@ -427,10 +462,10 @@ function quoteattr( s, preserveCR ) {
     .replace( /</g, '&lt;' )
     .replace( />/g, '&gt;' )
     /*
-    You may add other replacements here for HTML only 
+    You may add other replacements here for HTML only
     (but it's not necessary).
     Or for XML, only if the named entities are defined in its DTD.
-    */ 
+    */
     .replace( /\r\n/g, preserveCR ) /* Must be before the next replacement. */
     .replace( /[\r\n]/g, preserveCR );
     ;

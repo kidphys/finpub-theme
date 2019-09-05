@@ -1,1 +1,20 @@
-<div id="featured-posts"></div>
+<div id="featured-posts">
+    {{#get "posts" filter="featured:true" include="tags,authors,primary_tag"}}
+        {{#foreach posts}}
+            <article class="featured-post"
+                    style="background-image: url(&quot;{{feature_image}}&quot;); width: 324px;"
+                    aria-hidden="false"
+                    role="option">
+                <div class="entry-content">
+                    <h3 class="entry-title">
+                        <a href="{{url}}" rel="bookmark">{{title}}</a>
+                    </h3>
+                    <span class="entry-meta">
+                        <a href="{{primary_tag.url}}" >{{primary_tag.name}}</a>
+                    </span>
+                </div>
+            </article>
+        {{/foreach}}
+    {{/get}}
+
+</div>
