@@ -3,6 +3,7 @@
 <aside class="widget widget-posts-list widget-top-stories">
 	<h4 class="widget-title">Top authors</h4>
 	<span class="cat-links">
+        {{!-- hacky leverage the same css with author in post --}}
 		<ul class="post">
 			{{#get "authors" include="count.posts" order="count.posts desc" limit="6"}}
 				{{#foreach authors}}
@@ -12,6 +13,7 @@
 								<img class="author-image" src="{{profile_image}}" alt="{{name}}">
 								<div class="right">
 									<span class="author-name">{{name}}</span>
+									<span class="entry-date">{{count.posts}} posts</span>
 								</div>
 							</div>
 						</a>
