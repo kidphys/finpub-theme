@@ -59,6 +59,12 @@
 	<script src="{{asset "js/instafeed.min.js"}}"></script>
 	<script src="{{asset "js/functions.js"}}"></script>
 	<script type="text/javascript">
+		jQuery(document).ready( function($) {
+			$('#phonenumber').on('input', function(){
+				console.log('input change', $(this).val())
+			});
+		});
+
 		function changePaymentType(e) {
 			e.preventDefault();
 			e.stopPropagation();
