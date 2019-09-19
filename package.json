@@ -3,7 +3,7 @@
   "version": "2.1.5",
   "engines": {
     "ghost-api": "v2"
-},
+  },
   "author": {
     "name": "MondoTheme",
     "email": "mondotheme@gmail.com"
