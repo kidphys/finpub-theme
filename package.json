@@ -1,6 +1,6 @@
 {
   "name": "lark",
-  "version": "2.1.4",
+  "version": "2.1.4.1",
   "engines": {
     "ghost-api": "v2"
 },
