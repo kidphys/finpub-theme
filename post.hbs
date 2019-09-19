@@ -20,9 +20,15 @@
  					{{#post}}
 					<article class="post no-sidebar">
 						<div class="entry-meta clearfix">
-							<img class="author-image" src="{{img_url primary_author.profile_image}}" alt="{{primary_author.name}}">
+							<a href="{{primary_author.url}}">
+								<img class="author-image" src="{{img_url primary_author.profile_image}}" alt="{{primary_author.name}}">
+							</a>
 							<div class="right">
-								<span class="author-name">{{primary_author.name}}</span>
+								<span class="author-name">
+									<a href="{{primary_author.url}}">
+										{{primary_author.name}}
+									</a>
+								</span>
 								<span class="entry-date" title="{{date format="DD MMMM YYYY"}}"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time></span>
 								<span class="entry-share">
 									<i class="fa fa-share-alt"></i>
@@ -43,9 +49,11 @@
 					</article>
 					{{> payment}}
 					<div id="about-author">
-						<div class="author-image">
-							<img src="{{img_url primary_author.profile_image}}" alt="{{primary_author.name}}">
-						</div>
+						<a href="{{primary_author.url}}">
+							<div class="author-image">
+								<img src="{{img_url primary_author.profile_image}}" alt="{{primary_author.name}}">
+							</div>
+						</a>
 						<div class="author-info">
 							<h4 class="author-name align-center">{{primary_author.name}}</h4>
 							<p class="author-bio">{{primary_author.bio}}</p>
