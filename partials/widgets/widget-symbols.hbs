@@ -1,0 +1,11 @@
+<aside class="widget widget-symbols">
+	<h4 class="widget-title">Mã hay</h4>
+	<span class="cat-links">
+		{{!-- is this a bug here that limit N will only fetch (N-1) tags? --}}
+		{{#get "tags" filter="kind:1" include="count.posts" order="count.posts desc" limit="6"}}
+			{{#foreach tags}}
+				<a href="{{url}}">{{name}} | {{count.posts}} posts</a>
+			{{/foreach}}
+		{{/get}}
+	</span>
+</aside>
