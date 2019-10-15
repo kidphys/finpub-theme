@@ -1642,6 +1642,7 @@ button[type="submit"]:hover {
 .post .entry-meta .author-image {
   float: left;
   width: 35px;
+  height: 35px;
   border-radius: 50%;
 }
 .post .entry-meta .right {
