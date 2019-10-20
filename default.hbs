@@ -27,6 +27,16 @@
 		.image {
 			width: 100%;
 		}
+
+		.user-info {
+			position: relative;
+			clear: right;
+			float: left;
+			top: -25px;
+			left: 7px;
+			font-size: smaller;
+		}
+
 	</style>
 
 	<script>
@@ -121,6 +131,61 @@
 			copyToClipboard(contentNode.innerText);
 			return false;
 		}
+		console.log("setting finpub");
+		window.onFinpubReady = function(finpub) {
+			window.hasLoggedIn = false;
+			finpub.init(window.location);
+
+			function refreshLoginBtn() {
+					loginBtn.innerText = window.hasLoggedIn ? "Logout" : "Login";
+			}
+
+			function setupLoginBtn() {
+				let loginBtn = document.getElementById('loginBtn');
+				if (loginBtn) {
+					loginBtn.addEventListener('click', e => {
+						e.preventDefault();
+						e.stopPropagation();
+						if (window.hasLoggedIn) {
+							finpub.signout(function(info) {
+								console.log("User has logged out successfully", info);
+								window.hasLoggedIn = false;
+								refreshLoginBtn();
+							});
+						}
+						else {
+							finpub.signin(function(user) {
+								if (user) {
+									console.log("User has logged in successfully", user);
+									window.hasLoggedIn = true;
+									document.getElementById('user-info').innerText = user.email;
+									refreshLoginBtn();
+								}
+							});
+						}
+					});
+				}
+			}
+
+			setupLoginBtn();
+			console.log("onFinpubReady");
+			var loginPromise = finpub.getLoginInfo()
+			loginPromise.then(user => {
+				if (user) {
+					console.log("User has logged in");
+					window.hasLoggedIn = true;
+					refreshLoginBtn();
+				}
+				console.warn("Auth request success but 'user' is not returend??");
+			})
+			loginPromise.fail(e => {
+				console.log("User has not logged in");
+				window.hasLoggedIn = false;
+				refreshLoginBtn();
+			})
+
+		};
+
 	</script>
 	{{> facebook}}
 	{{> disqus}}
