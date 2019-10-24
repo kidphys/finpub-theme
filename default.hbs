@@ -35,8 +35,14 @@
 			top: -25px;
 			left: 7px;
 			font-size: smaller;
+			color: grey;
 		}
 
+		@media only screen and (max-width: 768px) {
+			.user-info {
+				top: -11px;
+			}
+		}
 	</style>
 
 	<script>
@@ -73,6 +79,9 @@
 	<script src="{{asset "js/instafeed.min.js"}}"></script>
 	<script src="{{asset "js/functions.js"}}"></script>
 	<script type="text/javascript">
+
+		window.nativeFetch = fetch;
+
 		jQuery(document).ready( function($) {
 			$('#phonenumber').on('input', function(){
 				console.log('input change', $(this).val())
@@ -137,7 +146,21 @@
 			finpub.init(window.location);
 
 			function refreshLoginBtn() {
-					loginBtn.innerText = window.hasLoggedIn ? "Logout" : "Login";
+				let loginBtn = document.getElementById('loginBtn');
+				loginBtn.innerText = window.hasLoggedIn ? "Logout" : "Login";
+			}
+
+			function refreshUserProfile(user) {
+				let userInfo = document.getElementById('user-info')
+				if (!userInfo) {
+					console.warn('User Info element could not be found');
+					return;
+				}
+				if (user) {
+					userInfo.innerText = user.email;
+				} else {
+					userInfo.innerText = "";
+				}
 			}
 
 			function setupLoginBtn() {
@@ -151,6 +174,7 @@
 								console.log("User has logged out successfully", info);
 								window.hasLoggedIn = false;
 								refreshLoginBtn();
+								refreshUserProfile();
 							});
 						}
 						else {
@@ -160,6 +184,7 @@
 									window.hasLoggedIn = true;
 									document.getElementById('user-info').innerText = user.email;
 									refreshLoginBtn();
+									refreshUserProfile(user);
 								}
 							});
 						}
@@ -175,13 +200,17 @@
 					console.log("User has logged in");
 					window.hasLoggedIn = true;
 					refreshLoginBtn();
+					refreshUserProfile(user)
 				}
-				console.warn("Auth request success but 'user' is not returend??");
+				else {
+					console.warn("Auth request success but 'user' is not returend??");
+				}
 			})
 			loginPromise.fail(e => {
 				console.log("User has not logged in");
 				window.hasLoggedIn = false;
 				refreshLoginBtn();
+				refreshUserProfile()
 			})
 
 		};
