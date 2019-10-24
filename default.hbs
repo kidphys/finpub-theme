@@ -11,6 +11,9 @@
 
   <link rel="shortcut icon" href="{{asset "/favicon.ico"}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script type="text/javascript">
+		window.nativeFetch = fetch;
+  </script>
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
 	<link rel="stylesheet" href="{{asset "css/screen.css"}}">
@@ -79,9 +82,6 @@
 	<script src="{{asset "js/instafeed.min.js"}}"></script>
 	<script src="{{asset "js/functions.js"}}"></script>
 	<script type="text/javascript">
-
-		window.nativeFetch = fetch;
-
 		jQuery(document).ready( function($) {
 			$('#phonenumber').on('input', function(){
 				console.log('input change', $(this).val())
@@ -206,7 +206,7 @@
 					console.warn("Auth request success but 'user' is not returend??");
 				}
 			})
-			loginPromise.fail(e => {
+			loginPromise.catch(e => {
 				console.log("User has not logged in");
 				window.hasLoggedIn = false;
 				refreshLoginBtn();
