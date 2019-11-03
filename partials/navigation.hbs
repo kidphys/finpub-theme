@@ -12,6 +12,10 @@
 				{{#foreach navigation}}
           <li class="menu-item nav-{{slug}}{{#if current}} nav-current{{/if}}" role="presentation"><a href="{{url absolute="true"}}">{{label}}</a></li>
         {{/foreach}}
+				<li class="menu-item mobile-authentication">
+					<a id="loginMobileBtn" href='' ></a>
+					<div id="user-info-mobile" class="user-info"> </div>
+				</li>
 			</ul>
 		</nav>
 		<nav id="authentication">

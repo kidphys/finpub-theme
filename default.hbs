@@ -55,11 +55,18 @@
 			margin-right: 100px;
 			float: right;
 		}
+		.mobile-authentication {
+			display: none;
+		}
 
 		{{!-- hiding login button in smaller screen --}}
 		@media (max-width: 991px) {
 			#authentication {
 				display: none;
+			}
+
+			.mobile-authentication {
+				display: block;
 			}
 		}
 
@@ -179,13 +186,18 @@
 			window.hasLoggedIn = false;
 			finpub.init(window.location);
 
-			function refreshLoginBtn() {
-				let loginBtn = document.getElementById('loginBtn');
+			function refreshLoginBtnWithId(id) {
+				let loginBtn = document.getElementById(id);
 				loginBtn.innerText = window.hasLoggedIn ? "Logout" : "Login";
 			}
 
-			function refreshUserProfile(user) {
-				let userInfo = document.getElementById('user-info')
+			function refreshLoginBtn() {
+				refreshLoginBtnWithId('loginBtn');
+				refreshLoginBtnWithId('loginMobileBtn');
+			}
+
+			function refreshUserProfileWithId(user, id) {
+				let userInfo = document.getElementById(id)
 				if (!userInfo) {
 					console.warn('User Info element could not be found');
 					return;
@@ -197,8 +209,13 @@
 				}
 			}
 
-			function setupLoginBtn() {
-				let loginBtn = document.getElementById('loginBtn');
+			function refreshUserProfile(user) {
+				refreshUserProfileWithId(user, 'user-info');
+				refreshUserProfileWithId(user, 'user-info-mobile');
+			}
+
+			function setupLoginBtn(id) {
+				let loginBtn = document.getElementById(id);
 				if (loginBtn) {
 					loginBtn.addEventListener('click', e => {
 						e.preventDefault();
@@ -226,7 +243,8 @@
 				}
 			}
 
-			setupLoginBtn();
+			setupLoginBtn('loginBtn');
+			setupLoginBtn('loginMobileBtn');
 			console.log("onFinpubReady");
 			var loginPromise = finpub.getLoginInfo()
 			loginPromise.then(user => {
@@ -244,7 +262,7 @@
 				console.log("User has not logged in");
 				window.hasLoggedIn = false;
 				refreshLoginBtn();
-				refreshUserProfile()
+				refreshUserProfile();
 			})
 
 		};
