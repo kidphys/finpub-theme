@@ -55,6 +55,14 @@
 			margin-right: 100px;
 			float: right;
 		}
+
+		{{!-- hiding login button in smaller screen --}}
+		@media (max-width: 991px) {
+			#authentication {
+				display: none;
+			}
+		}
+
 	</style>
 
 	<script>
@@ -95,7 +103,13 @@
 			$('#phonenumber').on('input', function(){
 				console.log('input change', $(this).val())
 			});
+
+			console.log('Current user if in payment page', window.finpub.currentUser())
 		});
+
+		function sanitize_email(email) {
+			return email.replace("@", " at ").replace(".", " ");
+		}
 
 		function changePaymentType(e) {
 			e.preventDefault();
@@ -123,9 +137,20 @@
 							p.className += ' hidden';
 					}
 				}
-				// Update the value of payment type
-				var payTypeInput = document.getElementById('id_payment_type');
-				payTypeInput.value = payType;
+				// Update the value of payment type ?
+				// var payTypeInput = document.getElementById('id_payment_type');
+				// payTypeInput.value = payType;
+
+				// Update the transfer description
+				var transferPrefix = document.getElementById('transfer_prefix');
+				var user = window.finpub.currentUser() || {};
+				if (user.email) {
+					var email = sanitize_email(user.email);
+					transferPrefix.innerText = email + " finpub "
+				}
+				else {
+					transferPrefix.innerText = "please login";
+				}
 			}
 			return false;
 		}
