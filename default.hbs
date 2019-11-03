@@ -11,6 +11,7 @@
 
   <link rel="shortcut icon" href="{{asset "/favicon.ico"}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
   <script type="text/javascript">
 		window.nativeFetch = fetch;
   </script>
@@ -162,27 +163,16 @@
 			return false;
 		}
 
-		function copyToClipboard(val) {
-			console.log('copy to clipboard', val)
-			var dom = document.getElementById('clipboard');
-			dom.value = val;
-			dom.select();
-			document.execCommand('copy');
-			console.log('done copy');
-		}
-
-		function copyText(event) {
-			event.stopPropagation();
-			event.preventDefault();
-			var dom = event.currentTarget,
-				parent = dom.parentElement.parentElement;
-
-			var contentNode = parent.querySelector('.bank_transfer__value');
-			copyToClipboard(contentNode.innerText);
-			return false;
-		}
 		console.log("setting finpub");
+
 		window.onFinpubReady = function(finpub) {
+
+			var clipboard = new ClipboardJS('.btn'); // initialize clipboard
+			clipboard.on('success', function(e) {
+				alert("Copied");
+    			e.clearSelection();
+			});
+
 			window.hasLoggedIn = false;
 			finpub.init(window.location);
 
