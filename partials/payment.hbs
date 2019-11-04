@@ -9,14 +9,14 @@
                             <div class="payment">
                                 <br>
                                 <p>Đây là bài viết có nội dung trả tiền, vui lòng thanh toán theo các thông tin hướng dẫn dưới đây</p>
-                                <p class="is-size-5 has-text-black">Ngay sau khi nhận được thanh toán, chúng tôi sẽ gửi xác nhận vào điện thoại của bạn</p>
+                                <p class="is-size-4 has-text-grey">Ngay sau khi nhận được thanh toán, chúng tôi sẽ gửi xác nhận vào điện thoại của bạn</p>
                             </div>
                             <div class="tabs">
                             <ul>
-                                <li data-payment-type="momo" class="is-active" onclick="return changePaymentType(event)">
+                                <li data-payment-type="momo" class="is-active is-size-5 has-text-weight-bold" onclick="return changePaymentType(event)">
                                     <a>Momo</a>
                                 </li>
-                                <li  data-payment-type="transfer" onclick="return changePaymentType(event)">
+                                <li  data-payment-type="transfer" class="is-size-5 has-text-weight-bold" onclick="return changePaymentType(event)">
                                     <a>Chuyển khoản</a>
                                 </li>
 
@@ -26,14 +26,14 @@
                             </ul>
                             </div>
                             <div class="payment-body transfer-payment hidden" data-payment-type="transfer">
-                                <div class="level is-size-6">
+                                <div class="level is-size-5">
                                     Chuyển khoản với nội dung sau
                                 </div>
                                 <div class="level">
                                     <div class="level-left">
                                         <div class="">
-                                            <p class="bank_transfer__label is-size-6 has-text-grey">Số tài khoản</p>
-                                            <p class="bank_transfer__value is-size-5">0123557686896</p>
+                                            <p class="bank_transfer__label is-size-5 has-text-grey">Số tài khoản</p>
+                                            <p class="bank_transfer__value is-size-4">0123557686896</p>
                                         </div>
                                     </div>
                                     <div class="level-right">
@@ -43,8 +43,8 @@
                                 <div class="level">
                                     <div class="level-left">
                                         <div class="">
-                                            <p class="bank_transfer__label is-size-6 has-text-grey">Tên chủ tài khoản</p>
-                                            <p class="bank_transfer__value is-size-5">Phạm Hà My</p>
+                                            <p class="bank_transfer__label is-size-5 has-text-grey">Tên chủ tài khoản</p>
+                                            <p class="bank_transfer__value is-size-4">Phạm Hà My</p>
                                         </div>
                                     </div>
                                     <div class="level-right">
@@ -54,24 +54,24 @@
                                 <div class="level">
                                     <div class="level-left">
                                         <div class="">
-                                            <p class="bank_transfer__label is-size-6 has-text-grey">Ngân hàng</p>
-                                            <p class="bank_transfer__value is-size-5">BIDV</p>
+                                            <p class="bank_transfer__label is-size-5 has-text-grey">Ngân hàng</p>
+                                            <p class="bank_transfer__value is-size-4">BIDV</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="level">
                                     <div class="level-left">
                                         <div class="">
-                                            <p class="bank_transfer__label is-size-6 has-text-grey-light">Số tiền</p>
-                                            <p class="bank_transfer__value is-size-5">{{fee}}</p>
+                                            <p class="bank_transfer__label is-size-5 has-text-grey-light">Số tiền</p>
+                                            <p class="bank_transfer__value is-size-4">{{fee}}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="level">
                                     <div class="level-left">
                                         <div class="">
-                                            <p class="bank_transfer__label is-size-6 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
-                                            <p class="bank_transfer__value is-size-5 has-text-weight-bold" id="transfer_description">
+                                            <p class="bank_transfer__label is-size-5 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
+                                            <p class="bank_transfer__value is-size-4 has-text-weight-bold" id="transfer_description">
                                                 <span id="transfer_prefix">finpub</span><span>{{fp_post_code}}</span>
                                             </p>
                                         </div>
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                             <div class="payment-body momo-payment " data-payment-type="momo">
-                                <div class="level is-size-6">
+                                <div class="level is-size-4 has-text-grey">
                                     Mở app MoMo, quét mã QR hoặc nhập số điện thoại phía dưới để thanh toán.
                                 </div>
 
@@ -91,8 +91,8 @@
                                         <div class="level">
                                             <div class="level-left">
                                                 <div class="">
-                                                    <p class="bank_transfer__label is-size-6 has-text-grey">Người nhận</p>
-                                                    <p class="bank_transfer__value is-size-5">Phạm Hà My</p>
+                                                    <p class="bank_transfer__label is-size-5 has-text-grey">Người nhận</p>
+                                                    <p class="bank_transfer__value is-size-4">Phạm Hà My</p>
                                                 </div>
                                             </div>
                                             <div class="level-right"><!--
@@ -103,8 +103,8 @@
                                         <div class="level">
                                             <div class="level-left">
                                                 <div class="">
-                                                    <p class="bank_transfer__label is-size-6 has-text-grey">Số điện thoại</p>
-                                                    <p class="bank_transfer__value is-size-5">0394919200</p>
+                                                    <p class="bank_transfer__label is-size-5 has-text-grey">Số điện thoại</p>
+                                                    <p class="bank_transfer__value is-size-4">0394919200</p>
                                                 </div>
                                             </div>
                                             <div class="level-right">
@@ -114,8 +114,8 @@
                                         <div class="level">
                                             <div class="level-left">
                                                 <div class="">
-                                                    <p class="bank_transfer__label is-size-6 has-text-grey-light">Số tiền</p>
-                                                    <p class="bank_transfer__value is-size-5">{{fee}}</p>
+                                                    <p class="bank_transfer__label is-size-5 has-text-grey-light">Số tiền</p>
+                                                    <p class="bank_transfer__value is-size-4">{{fee}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,8 +123,8 @@
                                         <div class="level">
                                             <div class="level-left">
                                                 <div class="">
-                                                    <p class="bank_transfer__label is-size-6 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
-                                                    <p class="bank_transfer__value is-size-5 has-text-weight-bold">
+                                                    <p class="bank_transfer__label is-size-5 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
+                                                    <p class="bank_transfer__value is-size-4 has-text-weight-bold">
                                                         finpub {{fp_post_code}}
                                                     </p>
                                                 </div>
