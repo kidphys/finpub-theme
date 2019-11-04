@@ -107,13 +107,6 @@
 	<script src="{{asset "js/instafeed.min.js"}}"></script>
 	<script src="{{asset "js/functions.js"}}"></script>
 	<script type="text/javascript">
-		jQuery(document).ready( function($) {
-			$('#phonenumber').on('input', function(){
-				console.log('input change', $(this).val())
-			});
-
-			console.log('Current user if in payment page', window.finpub.currentUser())
-		});
 
 		function sanitize_email(email) {
 			return email.replace("@", " at ").replace(".", " ");
@@ -176,6 +169,35 @@
 			window.hasLoggedIn = false;
 			finpub.init(window.location);
 
+			function hide(id) {
+				var paymentEl = document.getElementById(id);
+				if (paymentEl) {
+					paymentEl.style.display = 'none';
+				}
+			}
+
+			function show(id) {
+				var paymentEl = document.getElementById(id);
+				if (paymentEl) {
+					paymentEl.style.display = 'block';
+				}
+			}
+			/**
+			Show payment guide depends on user authentication status
+			*/
+			function refereshPaymentContent() {
+				var user = window.finpub.currentUser();
+				if (!user) {
+					show('payment-content-unauthenticated');
+					hide('payment-content-authenticated');
+					setupLoginBtn('loginPaymentBtn');
+				}
+				else{
+					hide('payment-content-unauthenticated');
+					show('payment-content-authenticated');
+				}
+			}
+
 			function refreshLoginBtnWithId(id) {
 				let loginBtn = document.getElementById(id);
 				loginBtn.innerText = window.hasLoggedIn ? "Logout" : "Login";
@@ -204,6 +226,26 @@
 				refreshUserProfileWithId(user, 'user-info-mobile');
 			}
 
+			function userHasLogin(user) {
+				if (user) {
+					console.log("User has logged in");
+					window.hasLoggedIn = true;
+					refreshLoginBtn();
+					refreshUserProfile(user)
+					refereshPaymentContent();
+				}
+				else {
+					console.warn("Auth request success but 'user' is not returend??");
+				}
+			}
+
+			function userHasLogout() {
+				window.hasLoggedIn = false;
+				refreshLoginBtn();
+				refreshUserProfile();
+				refereshPaymentContent();
+			}
+
 			function setupLoginBtn(id) {
 				let loginBtn = document.getElementById(id);
 				if (loginBtn) {
@@ -211,23 +253,10 @@
 						e.preventDefault();
 						e.stopPropagation();
 						if (window.hasLoggedIn) {
-							finpub.signout(function(info) {
-								console.log("User has logged out successfully", info);
-								window.hasLoggedIn = false;
-								refreshLoginBtn();
-								refreshUserProfile();
-							});
+							finpub.signout(userHasLogout);
 						}
 						else {
-							finpub.signin(function(user) {
-								if (user) {
-									console.log("User has logged in successfully", user);
-									window.hasLoggedIn = true;
-									document.getElementById('user-info').innerText = user.email;
-									refreshLoginBtn();
-									refreshUserProfile(user);
-								}
-							});
+							finpub.signin(userHasLogin);
 						}
 					});
 				}
@@ -239,20 +268,14 @@
 			var loginPromise = finpub.getLoginInfo()
 			loginPromise.then(user => {
 				if (user) {
-					console.log("User has logged in");
-					window.hasLoggedIn = true;
-					refreshLoginBtn();
-					refreshUserProfile(user)
+					userHasLogin(user);
 				}
 				else {
 					console.warn("Auth request success but 'user' is not returend??");
 				}
 			})
 			loginPromise.catch(e => {
-				console.log("User has not logged in");
-				window.hasLoggedIn = false;
-				refreshLoginBtn();
-				refreshUserProfile();
+				userHasLogout();
 			})
 
 		};

@@ -5,7 +5,7 @@
             <div class="columns">
                 <div class="column">
                     <div class="card">
-                        <div class="card-content">
+                        <div class="card-content" id="payment-content-authenticated" style="display:none">
                             <div class="payment">
                                 <br>
                                 <p>Đây là bài viết có nội dung trả tiền, vui lòng thanh toán theo các thông tin hướng dẫn dưới đây</p>
@@ -144,6 +144,11 @@
                                     </div>
                                 </div>
                                 <input id="clipboard" style="position: absolute; left: -9999px" readonly />
+                            </div>
+                        </div>
+                        <div class="card-content" id="payment-content-unauthenticated" style="display:none">
+                            <div>Đây là nội dung có trả tiền. Xin hãy
+                                <a id='loginPaymentBtn'>đăng nhập</a> để xem thông tin thanh toán
                             </div>
                         </div>
                     </div>
