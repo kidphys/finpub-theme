@@ -48,6 +48,13 @@
 			}
 		}
 
+		#logo-navigation {
+			padding-top: 5px;
+			margin-right: 10px;
+    		width: 47px;
+			float: left;
+		}
+
 		#main-navigation {
 			float: left !important;
 		}
@@ -200,7 +207,7 @@
 
 			function refreshLoginBtnWithId(id) {
 				let loginBtn = document.getElementById(id);
-				loginBtn.innerText = window.hasLoggedIn ? "Logout" : "Login";
+				loginBtn.innerText = window.hasLoggedIn ? "Đăng xuất" : "Đăng nhập";
 			}
 
 			function refreshLoginBtn() {
@@ -215,7 +222,7 @@
 					return;
 				}
 				if (user) {
-					userInfo.innerText = user.email;
+					userInfo.innerText = user.name;
 				} else {
 					userInfo.innerText = "";
 				}
