@@ -147,7 +147,7 @@
 				var user = window.finpub.currentUser() || {};
 				if (user.email) {
 					var email = sanitize_email(user.email);
-					transferPrefix.innerText = email + " finpub "
+					transferPrefix.innerText = email;
 				}
 				else {
 					transferPrefix.innerText = "please login";
