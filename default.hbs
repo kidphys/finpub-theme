@@ -98,6 +98,9 @@
 	</div>
 
 	{{ghost_foot}}
+	{{^if @member}}
+		{{> subscribe-form}}
+	{{/if}}
 
 	<script src="{{asset "js/jquery-2.1.4.min.js"}}"></script>
 	<script src="{{asset "js/slick.min.js"}}"></script>
@@ -281,8 +284,20 @@
 		};
 
 	</script>
+	{{^if @member}}
+		<script type="text/javascript">
+			$(document).ready(function () {
+
+		        // Reset form on opening subscrion overlay
+		        $('.subscribe-button').click(function() {
+		            $('.subscribe-overlay form').removeClass();
+		            $('.subscribe-email').val('');
+		        });
+        	});
+		</script>
+	{{/if}}
 	{{> facebook}}
-	{{> disqus}}
+	{{> disqus}}	
 
 </body>
 </html>
