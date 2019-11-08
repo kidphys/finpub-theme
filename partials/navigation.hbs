@@ -7,16 +7,23 @@
 			<span class="bar"></span>
 		</div>
 		<ul class="social-links" style="display:none"></ul>
+		<nav id="logo-navigation">
+			<a href="/">
+				<img src="https://tiblogen.sirv.com/Images/logo_tiny.png" width="100" height="107" alt="">
+			</a>
+		</nav>
 		<nav id="main-navigation">
 			<ul class="nav-list clearfix">
 				{{#foreach navigation}}
           			<li class="menu-item nav-{{slug}}{{#if current}} nav-current{{/if}}" role="presentation">
-          				<a href="{{url absolute="true"}}">{{label}}</a>
+          				<a href="{{url absolute="true"}}">
+          					{{label}} <span class="has-text-grey-light has-text-weight-light">|</span> 
+          				</a>
           			</li>
         		{{/foreach}}        			
 					<li class="menu-item mobile-authentication">
 						{{#if @member}}						
-							<a id="loginMobileBtn" href='' >Đăng Xuất</a>
+							<a id="loginMobileBtn" href='#' data-members-signout >Đăng Xuất</a>
 							<div id="user-info-mobile" class="user-info"> </div>
 						{{else}}
 							<a id="loginMobileBtn" class="subscribe-button" href="#subscribe">Đăng Ký</a>
@@ -28,7 +35,7 @@
 			<ul class="nav-list clearfix">
 				<li class="menu-item">
 					{{#if @member}}	
-						<a id="loginBtn" >Đăng Xuất</a>
+						<a id="loginBtn" data-members-signout>Đăng Xuất</a>
 						<div id="user-info" class="user-info">
 						</div>
 					{{else}}

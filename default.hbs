@@ -7,16 +7,10 @@
 	<title>{{meta_title}}</title>
 
 	<meta name="HandheldFriendly" content="True">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="shortcut icon" href="{{asset "/favicon.ico"}}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
-  <script type="text/javascript">
-		window.nativeFetch = fetch;
-  </script>
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <link rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
+  	<link rel="shortcut icon" href="{{asset "/favicon.ico"}}">  
+  	
 	<link rel="stylesheet" href="{{asset "css/screen.css"}}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CUbuntu:400,700">
 	<style>
@@ -46,6 +40,13 @@
 			.user-info {
 				top: -11px;
 			}
+		}
+
+		#logo-navigation {
+			padding-top: 5px;
+			margin-right: 10px;
+    		width: 47px;
+			float: left;
 		}
 
 		#main-navigation {
@@ -78,6 +79,13 @@
 	</script>
 
 	{{ghost_head}}
+
+	{{#is "post"}}
+	  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>  
+	  	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	  	<link rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
+  	{{/is}}
 </head>
 <body class="{{body_class}}">
 
@@ -98,6 +106,7 @@
 	</div>
 
 	{{ghost_foot}}
+
 	{{^if @member}}
 		{{> subscribe-form}}
 	{{/if}}
@@ -107,195 +116,136 @@
 	<script src="{{asset "js/velocity.min.js"}}"></script>
 	<script src="{{asset "js/jquery.fitvids.js"}}"></script>
 	<script src="{{asset "js/jquery.ghostrelated.min.js"}}"></script>
-	<script src="{{asset "js/instafeed.min.js"}}"></script>
+	<!-- <script src="{{asset "js/instafeed.min.js"}}"></script> -->
 	<script src="{{asset "js/functions.js"}}"></script>
 	<script type="text/javascript">
 
-		function sanitize_email(email) {
-			return email.replace("@", " at ").replace(".", " ");
-		}
+		// console.log("setting finpub");
 
-		function changePaymentType(e) {
-			e.preventDefault();
-			e.stopPropagation();
-			if (e.currentTarget.className.indexOf('is-active') < 0) {
-				// set it as active.
-				var dom = e.currentTarget,
-					parent = e.currentTarget.parentElement,
-					active = parent.querySelector('.is-active');
-				active.className = active.className.replace('is-active', '');
-				dom.className += ' is-active';
-				var payType = dom.dataset['paymentType'];
-				var allPayments = document.querySelectorAll('.payment-body');
-				for (var i = 0; i < allPayments.length; i++) {
-					var p = allPayments[i];
-					// if (p.className.indexOf(payType.toLowerCase()) < 0)
-					//     p.style.display = 'none';
-					// else
-					//     p.style.display = 'block';
-					if (p.dataset['paymentType'] === payType) {
-						p.className = p.className.replace('hidden');
-					}
-					else {
-						if (p.className.indexOf('hidden') < 0)
-							p.className += ' hidden';
-					}
-				}
-				// Update the value of payment type ?
-				// var payTypeInput = document.getElementById('id_payment_type');
-				// payTypeInput.value = payType;
+		// window.onFinpubReady = function(finpub) {
 
-				// Update the transfer description
-				var transferPrefix = document.getElementById('transfer_prefix');
-				var user = window.finpub.currentUser() || {};
-				if (user.email) {
-					var email = sanitize_email(user.email);
-					transferPrefix.innerText = email;
-				}
-				else {
-					transferPrefix.innerText = "please login";
-				}
-			}
-			return false;
-		}
+		// 	var clipboard = new ClipboardJS('.btn'); // initialize clipboard
+		// 	clipboard.on('success', function(e) {
+		// 		alert("Thông tin đã được copy");
+  //   			e.clearSelection();
+		// 	});
 
-		console.log("setting finpub");
+		// 	window.hasLoggedIn = false;
+		// 	finpub.init(window.location);
 
-		window.onFinpubReady = function(finpub) {
+		// 	function hide(id) {
+		// 		var paymentEl = document.getElementById(id);
+		// 		if (paymentEl) {
+		// 			paymentEl.style.display = 'none';
+		// 		}
+		// 	}
 
-			var clipboard = new ClipboardJS('.btn'); // initialize clipboard
-			clipboard.on('success', function(e) {
-				alert("Thông tin đã được copy");
-    			e.clearSelection();
-			});
+		// 	function show(id) {
+		// 		var paymentEl = document.getElementById(id);
+		// 		if (paymentEl) {
+		// 			paymentEl.style.display = 'block';
+		// 		}
+		// 	}
+		// 	/**
+		// 	Show payment guide depends on user authentication status
+		// 	*/
+		// 	function refereshPaymentContent() {
+		// 		var user = window.finpub.currentUser();
+		// 		if (!user) {
+		// 			show('payment-content-unauthenticated');
+		// 			hide('payment-content-authenticated');
+		// 			setupLoginBtn('loginPaymentBtn');
+		// 		}
+		// 		else{
+		// 			hide('payment-content-unauthenticated');
+		// 			show('payment-content-authenticated');
+		// 		}
+		// 	}
 
-			window.hasLoggedIn = false;
-			finpub.init(window.location);
+		// 	function refreshLoginBtnWithId(id) {
+		// 		let loginBtn = document.getElementById(id);
+		// 		loginBtn.innerText = window.hasLoggedIn ? "Đăng xuất" : "Đăng nhập";
+		// 	}
 
-			function hide(id) {
-				var paymentEl = document.getElementById(id);
-				if (paymentEl) {
-					paymentEl.style.display = 'none';
-				}
-			}
+		// 	function refreshLoginBtn() {
+		// 		refreshLoginBtnWithId('loginBtn');
+		// 		refreshLoginBtnWithId('loginMobileBtn');
+		// 	}
 
-			function show(id) {
-				var paymentEl = document.getElementById(id);
-				if (paymentEl) {
-					paymentEl.style.display = 'block';
-				}
-			}
-			/**
-			Show payment guide depends on user authentication status
-			*/
-			function refereshPaymentContent() {
-				var user = window.finpub.currentUser();
-				if (!user) {
-					show('payment-content-unauthenticated');
-					hide('payment-content-authenticated');
-					setupLoginBtn('loginPaymentBtn');
-				}
-				else{
-					hide('payment-content-unauthenticated');
-					show('payment-content-authenticated');
-				}
-			}
+		// 	function refreshUserProfileWithId(user, id) {
+		// 		let userInfo = document.getElementById(id)
+		// 		if (!userInfo) {
+		// 			console.warn('User Info element could not be found');
+		// 			return;
+		// 		}
+		// 		if (user) {
+		// 			userInfo.innerText = user.name;
+		// 		} else {
+		// 			userInfo.innerText = "";
+		// 		}
+		// 	}
 
-			function refreshLoginBtnWithId(id) {
-				let loginBtn = document.getElementById(id);
-				loginBtn.innerText = window.hasLoggedIn ? "Logout" : "Login";
-			}
+		// 	function refreshUserProfile(user) {
+		// 		refreshUserProfileWithId(user, 'user-info');
+		// 		refreshUserProfileWithId(user, 'user-info-mobile');
+		// 	}
 
-			function refreshLoginBtn() {
-				refreshLoginBtnWithId('loginBtn');
-				refreshLoginBtnWithId('loginMobileBtn');
-			}
+		// 	function userHasLogin(user) {
+		// 		if (user) {
+		// 			console.log("User has logged in");
+		// 			window.hasLoggedIn = true;
+		// 			refreshLoginBtn();
+		// 			refreshUserProfile(user)
+		// 			refereshPaymentContent();
+		// 		}
+		// 		else {
+		// 			console.warn("Auth request success but 'user' is not returend??");
+		// 		}
+		// 	}
 
-			function refreshUserProfileWithId(user, id) {
-				let userInfo = document.getElementById(id)
-				if (!userInfo) {
-					console.warn('User Info element could not be found');
-					return;
-				}
-				if (user) {
-					userInfo.innerText = user.email;
-				} else {
-					userInfo.innerText = "";
-				}
-			}
+		// 	function userHasLogout() {
+		// 		window.hasLoggedIn = false;
+		// 		refreshLoginBtn();
+		// 		refreshUserProfile();
+		// 		refereshPaymentContent();
+		// 	}
 
-			function refreshUserProfile(user) {
-				refreshUserProfileWithId(user, 'user-info');
-				refreshUserProfileWithId(user, 'user-info-mobile');
-			}
+		// 	function setupLoginBtn(id) {
+		// 		let loginBtn = document.getElementById(id);
+		// 		if (loginBtn) {
+		// 			loginBtn.addEventListener('click', e => {
+		// 				e.preventDefault();
+		// 				e.stopPropagation();
+		// 				if (window.hasLoggedIn) {
+		// 					finpub.signout(userHasLogout);
+		// 				}
+		// 				else {
+		// 					finpub.signin(userHasLogin);
+		// 				}
+		// 			});
+		// 		}
+		// 	}
 
-			function userHasLogin(user) {
-				if (user) {
-					console.log("User has logged in");
-					window.hasLoggedIn = true;
-					refreshLoginBtn();
-					refreshUserProfile(user)
-					refereshPaymentContent();
-				}
-				else {
-					console.warn("Auth request success but 'user' is not returend??");
-				}
-			}
+		// 	setupLoginBtn('loginBtn');
+		// 	setupLoginBtn('loginMobileBtn');
+		// 	console.log("onFinpubReady");
+		// 	var loginPromise = finpub.getLoginInfo()
+		// 	loginPromise.then(user => {
+		// 		if (user) {
+		// 			userHasLogin(user);
+		// 		}
+		// 		else {
+		// 			console.warn("Auth request success but 'user' is not returend??");
+		// 		}
+		// 	})
+		// 	loginPromise.catch(e => {
+		// 		userHasLogout();
+		// 	})
 
-			function userHasLogout() {
-				window.hasLoggedIn = false;
-				refreshLoginBtn();
-				refreshUserProfile();
-				refereshPaymentContent();
-			}
-
-			function setupLoginBtn(id) {
-				let loginBtn = document.getElementById(id);
-				if (loginBtn) {
-					loginBtn.addEventListener('click', e => {
-						e.preventDefault();
-						e.stopPropagation();
-						if (window.hasLoggedIn) {
-							finpub.signout(userHasLogout);
-						}
-						else {
-							finpub.signin(userHasLogin);
-						}
-					});
-				}
-			}
-
-			setupLoginBtn('loginBtn');
-			setupLoginBtn('loginMobileBtn');
-			console.log("onFinpubReady");
-			var loginPromise = finpub.getLoginInfo()
-			loginPromise.then(user => {
-				if (user) {
-					userHasLogin(user);
-				}
-				else {
-					console.warn("Auth request success but 'user' is not returend??");
-				}
-			})
-			loginPromise.catch(e => {
-				userHasLogout();
-			})
-
-		};
+		// };
 
 	</script>
-	{{^if @member}}
-		<script type="text/javascript">
-			$(document).ready(function () {
-
-		        // Reset form on opening subscrion overlay
-		        $('.subscribe-button').click(function() {
-		            $('.subscribe-overlay form').removeClass();
-		            $('.subscribe-email').val('');
-		        });
-        	});
-		</script>
-	{{/if}}
+	
 	{{> facebook}}
 	{{> disqus}}	
 
