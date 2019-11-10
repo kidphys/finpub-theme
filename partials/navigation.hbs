@@ -15,22 +15,32 @@
 		<nav id="main-navigation">
 			<ul class="nav-list clearfix">
 				{{#foreach navigation}}
-          <li class="menu-item nav-{{slug}}{{#if current}} nav-current{{/if}}" role="presentation"><a href="{{url absolute="true"}}">{{label}}
-			<span class="has-text-grey-light has-text-weight-light">|</span>
-		  </a></li>
-        {{/foreach}}
-				<li class="menu-item mobile-authentication">
-					<a id="loginMobileBtn" href='' ></a>
-					<div id="user-info-mobile" class="user-info"> </div>
-				</li>
+          			<li class="menu-item nav-{{slug}}{{#if current}} nav-current{{/if}}" role="presentation">
+          				<a href="{{url absolute="true"}}">
+          					{{label}} <span class="has-text-grey-light has-text-weight-light">|</span> 
+          				</a>
+          			</li>
+        		{{/foreach}}        			
+					<li class="menu-item mobile-authentication">
+						{{#if @member}}						
+							<a id="loginMobileBtn" href='#' data-members-signout >Đăng Xuất</a>
+							<div id="user-info-mobile" class="user-info"> </div>
+						{{else}}
+							<a id="loginMobileBtn" class="subscribe-button" href="#subscribe">Đăng Ký</a>
+						{{/if}}
+					</li>
 			</ul>
 		</nav>
 		<nav id="authentication">
 			<ul class="nav-list clearfix">
 				<li class="menu-item">
-					<a id="loginBtn" href='' ></a>
-					<div id="user-info" class="user-info">
-					</div>
+					{{#if @member}}	
+						<a id="loginBtn" data-members-signout>Đăng Xuất</a>
+						<div id="user-info" class="user-info">
+						</div>
+					{{else}}
+						<a id="loginBtn" class="subscribe-button" href="#subscribe">Đăng Ký</a>
+					{{/if}}
 				</li>
 			</ul>
 		</nav>

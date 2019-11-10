@@ -1,3 +1,6 @@
+(function() {
+	'use strict';
+
 var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
@@ -21,7 +24,7 @@ jQuery( document ).ready( function( $ ) {
 		initFitVids( $ );
 		initPostShare( $ );
 		initRelatedPosts( $ );
-		loadInstagramPhotos( $ );
+		// loadInstagramPhotos( $ );
 		initCopyright( $ );
 		initGallery( $ );
 	} )( jQuery );
@@ -359,57 +362,57 @@ function initRelatedPosts( $ ) {
 	} );
 }
 
-function loadInstagramPhotos( $ ) {
-	'use strict';
+// function loadInstagramPhotos( $ ) {
+// 	'use strict';
 
-	var wrapper = $( '#media-feed-thumbnails' );
-	var photos;
+// 	var wrapper = $( '#media-feed-thumbnails' );
+// 	var photos;
 
-	if ( mondoOptions.instagram.access_token != '' ) {
-		if ( localStorage.getItem( 'instagram' ) !== null && ( Math.floor( Date.now() / 1000 ) - JSON.parse( localStorage.getItem( 'instagram' ) ).timestamp ) < 300 ) {
-			photos = JSON.parse( localStorage.getItem( 'instagram' ) ).photos;
-			outputInstagramPhotos( photos, wrapper );
-		} else {
-			var feed = new Instafeed( {
-		    get: 'user',
-		    userId: mondoOptions.instagram.user_id,
-		    accessToken: mondoOptions.instagram.access_token,
-		    resolution: 'standard_resolution',
-		    limit: 7,
-		    mock: true,
-		    success: function( result ) {
-		    	photos = result.data;
-		    	var cache = {
-		    		photos: photos,
-		    		timestamp: Math.floor( Date.now() / 1000 )
-		    	};
+// 	if ( mondoOptions.instagram.access_token != '' ) {
+// 		if ( localStorage.getItem( 'instagram' ) !== null && ( Math.floor( Date.now() / 1000 ) - JSON.parse( localStorage.getItem( 'instagram' ) ).timestamp ) < 300 ) {
+// 			photos = JSON.parse( localStorage.getItem( 'instagram' ) ).photos;
+// 			outputInstagramPhotos( photos, wrapper );
+// 		} else {
+// 			var feed = new Instafeed( {
+// 		    get: 'user',
+// 		    userId: mondoOptions.instagram.user_id,
+// 		    accessToken: mondoOptions.instagram.access_token,
+// 		    resolution: 'standard_resolution',
+// 		    limit: 7,
+// 		    mock: true,
+// 		    success: function( result ) {
+// 		    	photos = result.data;
+// 		    	var cache = {
+// 		    		photos: photos,
+// 		    		timestamp: Math.floor( Date.now() / 1000 )
+// 		    	};
 
-		    	localStorage.setItem( 'instagram', JSON.stringify( cache ) );
+// 		    	localStorage.setItem( 'instagram', JSON.stringify( cache ) );
 
-		    	outputInstagramPhotos( photos, wrapper );
-		    }
-		  } );
+// 		    	outputInstagramPhotos( photos, wrapper );
+// 		    }
+// 		  } );
 
-		  feed.run();
-		}
-	} else {
-		$( '#mondo-media-feed' ).remove();
-	}
-}
+// 		  feed.run();
+// 		}
+// 	} else {
+// 		$( '#mondo-media-feed' ).remove();
+// 	}
+// }
 
-function outputInstagramPhotos( photos, wrapper ) {
-	'use strict';
+// function outputInstagramPhotos( photos, wrapper ) {
+// 	'use strict';
 
-	var photo;
-	var output = '';
+// 	var photo;
+// 	var output = '';
 
-	for ( var index in photos ) {
-		photo = photos[ index ];
-		output += '<a class="thumbnail" href="' + photo.link + '" target="_blank" style="background-image: url(' + photo.images.standard_resolution.url + ');"></a>';
-	}
+// 	for ( var index in photos ) {
+// 		photo = photos[ index ];
+// 		output += '<a class="thumbnail" href="' + photo.link + '" target="_blank" style="background-image: url(' + photo.images.standard_resolution.url + ');"></a>';
+// 	}
 
-	wrapper.html( output );
-}
+// 	wrapper.html( output );
+// }
 
 function mediaFeedHeight( $ ) {
 	'use strict';
@@ -470,3 +473,5 @@ function quoteattr( s, preserveCR ) {
     .replace( /[\r\n]/g, preserveCR );
     ;
 }
+
+})();

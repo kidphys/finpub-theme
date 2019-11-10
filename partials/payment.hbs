@@ -1,11 +1,57 @@
 {{#if fee}}
+
+</script>
 <div id="payment">
     <section class="section">
         <div class="is-fluid">
             <div class="columns">
                 <div class="column">
                     <div class="card">
-                        <div class="card-content" id="payment-content-authenticated" style="display:none">
+                        {{#if @member}}
+                        <script>
+                            function sanitize_email(email) {
+                                return email.replace("@", " at ").replace(".", " ");
+                            }
+
+                            function changePaymentType(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                if (e.currentTarget.className.indexOf('is-active') < 0) {
+                                    // set it as active.
+                                    var dom = e.currentTarget,
+                                        parent = e.currentTarget.parentElement,
+                                        active = parent.querySelector('.is-active');
+                                    active.className = active.className.replace('is-active', '');
+                                    dom.className += ' is-active';
+                                    var payType = dom.dataset['paymentType'];
+                                    var allPayments = document.querySelectorAll('.payment-body');
+                                    for (var i = 0; i < allPayments.length; i++) {
+                                        var p = allPayments[i];
+                                        // if (p.className.indexOf(payType.toLowerCase()) < 0)
+                                        //     p.style.display = 'none';
+                                        // else
+                                        //     p.style.display = 'block';
+                                        if (p.dataset['paymentType'] === payType) {
+                                            p.className = p.className.replace('hidden');
+                                        }
+                                        else {
+                                            if (p.className.indexOf('hidden') < 0)
+                                                p.className += ' hidden';
+                                        }
+                                    }
+                                    // Update the value of payment type ?
+                                    // var payTypeInput = document.getElementById('id_payment_type');
+                                    // payTypeInput.value = payType;
+
+                                    // Update the transfer description
+                                    var transferPrefix = document.getElementById('transfer_prefix');
+                                    var email = sanitize_email('{{@member.email}}');
+                                    transferPrefix.innerText = email;
+                                }
+                                return false;
+                            }
+                        </script>
+                        <div class="card-content" id="payment-content-authenticated" >
                             <div class="payment">
                                 <br>
                                 <p>Đây là bài viết có nội dung trả tiền, vui lòng thanh toán theo các thông tin hướng dẫn dưới đây</p>
@@ -146,11 +192,13 @@
                                 <input id="clipboard" style="position: absolute; left: -9999px" readonly />
                             </div>
                         </div>
-                        <div class="card-content" id="payment-content-unauthenticated" style="display:none">
+                        {{else}}
+                        <div class="card-content" id="payment-content-unauthenticated" >
                             <div>Đây là nội dung có trả tiền. Xin hãy
-                                <a id='loginPaymentBtn'>đăng nhập</a> để xem thông tin thanh toán
+                                <a href="#subscribe">đăng nhập</a> để xem thông tin thanh toán
                             </div>
                         </div>
+                        {{/if}}
                     </div>
                 </div>
             </div>
