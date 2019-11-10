@@ -24,7 +24,7 @@
 					<li class="menu-item mobile-authentication">
 						{{#if @member}}						
 							<a id="loginMobileBtn" href='#' data-members-signout >Đăng Xuất</a>
-							<div id="user-info-mobile" class="user-info"> </div>
+							<div id="user-info-mobile" class="user-info">{{@member.email}}</div>
 						{{else}}
 							<a id="loginMobileBtn" class="subscribe-button" href="#subscribe">Đăng Ký</a>
 						{{/if}}
