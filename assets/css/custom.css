@@ -374,3 +374,90 @@
 .fp-cat-links > a:hover {
     color: #333;
 }
+
+.post .entry-content {
+    font-size: 1.7rem;
+    line-height: 2em;
+}
+.post .entry-content p {
+    margin: 0 0 30px;
+}
+.post .entry-content ol,.post .entry-content ul {
+    padding-left: 15px;
+}
+.post .entry-content li {
+    margin: 0 0 10px;
+}
+.hidden {
+    display: none;
+}
+
+.fp-box {
+    border: 1px solid #e3e9ed;
+    background: linear-gradient(#fbfdfe,#f4f8fb);
+    text-align: center;
+    border-radius: 3px;
+    margin: 20px 0px;
+    padding: 30px 20px;
+}
+
+.columns {
+    display: flex;
+}
+.column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+}
+
+@media screen and (min-width: 769px), print {
+    .level {
+        display: flex;
+    }
+}
+.level {
+    align-items: center;
+    justify-content: space-between;
+}
+.level-right {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+table.payment-info th, table.payment-info td {
+    text-align: left;
+}
+
+.fp-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.tabs > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #e3e9ed;
+
+}
+
+.tabs > ul > li {
+    list-style: none;
+    padding: 5px 20px;
+    margin-right: 5px;
+}
+
+.tabs a {
+    color: var(--darktext);
+}
+
+.tabs > ul > li.is-active {
+    border-bottom: 1px solid red;
+}
