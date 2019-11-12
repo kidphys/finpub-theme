@@ -353,17 +353,17 @@
     color: #333;
 }
 .post-list .author-name:after {
-    color: #bfbfbf;
+    color: var(--lighttext);
 }
 .fp-cat-links > .fa-tags {
-    color: #bfbfbf;
+    color: var(--lighttext);
     font-size: 12px;
     margin-right: 5px;
 }
 .fp-cat-links > a {
     font-family: "Ubuntu", sans-serif;
     font-size: 12px;
-    color: #bfbfbf;
+    color: var(--lighttext);
     display: inline-block;
     margin-right: 10px;
 }
