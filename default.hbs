@@ -79,14 +79,14 @@
 	</script>
 
 	{{ghost_head}}
-
+	<link rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	
 	{{#is "post"}}
 		{{#post}}
 			{{#if fee}}
 			  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-			  	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>  
-			  	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-			  	<link rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
+			  	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>  			  				  
 		  	{{/if}}
 	  	{{/post}}
   	{{/is}}
