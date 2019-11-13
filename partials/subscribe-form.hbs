@@ -1,25 +1,25 @@
-<div id="subscribe" class="subscribe-overlay">    
+<div id="subscribe" class="subscribe-overlay">
     <a class="subscribe-close" href="#"></a>
     <div class="subscribe-overlay-content">
         {{#if @site.logo}}
             <img class="subscribe-overlay-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
         {{/if}}
         <div class="subscribe-form">
-            <h1 class="subscribe-form-title">Subscribe to {{@site.title}}</h1>
-            <p class="subscribe-form-description">Get the latest posts delivered right to your inbox</p>
+            <h1 class="subscribe-form-title">Hãy gia nhập {{@site.title}}</h1>
+            <p class="subscribe-form-description">Cập nhật liên tục những bài viết hay nhất về thị trường chứng khoán</p>
             <form data-fp-members-form="subscribe">
                 <div class="form-group">
-                    <input class="subscribe-email" data-members-email placeholder="youremail@example.com" autocomplete="false" />
-                    <button class="button primary" type="submit">
-                        <span class="button-content">Subscribe</span>
+                    <input class="subscribe-email" data-members-email placeholder="email-của-bạn@vídụ.com" autocomplete="false" />
+                    <button class="button primary" style="width: 200px;" type="submit">
+                        <span class="button-content">Đăng ký</span>
                         <span class="button-loader">{{> "icons/loader"}}</span>
                     </button>
                 </div>
                 <div class="message-success">
-                    <strong>Great!</strong> Check your inbox and click the link to confirm your subscription.
+                    <strong>Great!</strong> Chào mừng bạn đến với Finpub, bạn sẽ nhận được email hướng dẫn bắt đầu trong 1 lúc nữa.
                 </div>
                 <div class="message-error">
-                    Please enter a valid email address!
+                    Xin hãy điền email hợp lệ
                 </div>
             </form>
         </div>
