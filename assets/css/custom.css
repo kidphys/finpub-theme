@@ -350,7 +350,7 @@
 
 /* ****************************************** */
 .post-list .author-name {
-    color: #333;
+    color: var(--darktext);
 }
 .post-list .author-name:after {
     color: var(--lighttext);
@@ -374,19 +374,30 @@
 .fp-cat-links > a:hover {
     color: #333;
 }
-
-.post .entry-content {
+.fp-post-list-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.post .entry-content.fp-entry-content {
     font-size: 1.7rem;
     line-height: 2em;
 }
-.post .entry-content p {
+.post .entry-content.fp-entry-content p {
     margin: 0 0 30px;
 }
-.post .entry-content ol,.post .entry-content ul {
+.post .entry-content.fp-entry-content ol,.post .entry-content.fp-entry-content ul {
     padding-left: 15px;
 }
-.post .entry-content li {
+.post .entry-content.fp-entry-content li {
     margin: 0 0 10px;
+}
+
+.fp-author-image > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 .hidden {
     display: none;
@@ -461,3 +472,36 @@ table.payment-info th, table.payment-info td {
 .tabs > ul > li.is-active {
     border-bottom: 1px solid red;
 }
+
+.fp-section-header {
+    margin: 15px 13px;
+    padding: 15px 0px;
+    border-bottom: 2px solid #e3e9ed;
+}
+.fp-related-posts {
+    margin-top: 20px;
+}
+
+.article-card {
+    padding: 10px 15px;
+}
+
+.article-card__img img {
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.article-card__title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+
+.article-card__desc {
+
+}
+
