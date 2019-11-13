@@ -5,6 +5,12 @@
     <div class="card">
         {{#if @member}}
         <script>
+            var clipboard = new ClipboardJS('.btn'); // initialize clipboard
+            clipboard.on('success', function(e) {
+                 alert("Thông tin đã được copy");
+                 e.clearSelection();
+            });
+
             function sanitize_email(email) {
                 return email.replace("@", " at ").replace(".", " ");
             }
@@ -73,10 +79,10 @@
                     <table class="payment-info">
                         <tbody>
                             <tr>
-                                <th>Số tài khoản</th><td id="bank_account">0123557686896 </td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_account"><i class="fas fa-copy tt-clickable"></i></a> </td>
+                                <th>Số tài khoản</th><td id="bank_account">0123557686896</td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_account"><i class="fas fa-copy tt-clickable"></i></a> </td>
                             </tr>
                             <tr>
-                                <th>Chủ tài khoản</th><td id="bank_owner_name">Phạm Hà My </td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_owner_name"><i class="fas fa-copy tt-clickable"></i></a></td>
+                                <th>Chủ tài khoản</th><td id="bank_owner_name">Phạm Hà My</td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_owner_name"><i class="fas fa-copy tt-clickable"></i></a></td>
                             </tr>
                             <tr>
                                 <th>Ngân hàng</th><td>BIDV</td><td></td>

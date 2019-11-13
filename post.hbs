@@ -43,20 +43,21 @@
 						<div class="entry-header">
 							<h2 class="entry-title"><a href="{{url}}" rel="bookmark">{{title}}</a></h2>
 						</div>
-						<div class="entry-content">						
+						<div class="entry-content fp-entry-content">						
 							{{content}}
 						</div>
 					</article>
 					{{> payment}}
+
 					<div id="about-author">
 						<a href="{{primary_author.url}}">
-							<div class="author-image">
+							<div class="author-image fp-author-image">
 								<img src="{{img_url primary_author.profile_image}}" alt="{{primary_author.name}}">
 							</div>
 						</a>
 						<div class="author-info">
 							<h4 class="author-name align-center">{{primary_author.name}}</h4>
-							<p class="author-bio">{{primary_author.bio}}</p>
+							<p class="author-bio txt-center">{{primary_author.bio}}</p>
 							<div class="author-meta align-center">
 								{{#if primary_author.location}}<span><i class="fa fa-map-marker"></i> {{primary_author.location}}</span>{{/if}}
 								{{#if primary_author.website}}<span><i class="fa fa-globe"></i> <a href="{{primary_author.website}}">{{primary_author.website}}</a></span>{{/if}}
@@ -64,7 +65,29 @@
 						</div>
 					</div>
 
-					<div id="related-posts" class="row"></div>
+					{{#get "posts" include="authors" limit="2" filter="id:-{{id}}+tag:{{primary_tag.slug}}" as |related|}}	
+						<div id="related-posts" class="row fp-related-posts">																	  
+						    <h2 class="related-title fp-section-header">Bài liên quan</h2>
+						    {{#foreach related}}			
+						    	<div class="article-card col-md-6">
+						    		<div class="article-card__img">
+							    		<a href="{{url}}" rel="bookmark">
+											
+											<img src="{{img_url feature_image}}" alt="{{title}}">
+											
+										</a>
+									</div>
+									<div class="article-card__title">
+										<a href="{{url}}"><h4>{{title}}</h4></a>
+									</div>
+									<div class="article-card__desc">
+										{{excerpt words="13"}}...
+									</div>
+						    	</div>
+						      	
+						    {{/foreach}}						  						
+						</div>
+					{{/get}}
 
 					<div id="disqus_thread"></div>
 					{{/post}}
