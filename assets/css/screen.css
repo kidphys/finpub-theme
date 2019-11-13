@@ -207,7 +207,7 @@ html {
 }
 body {
   background-color: #fff;
-  color: #333;
+  color: var(--darktext);
   font-family: "Merriweather", serif;
   font-size: 15px;
   line-height: 2;
@@ -276,7 +276,7 @@ a {
   transition: color 0.2s ease;
 }
 a:hover {
-  color: #333;
+  color: var(--darktext);
   text-decoration: none;
 }
 a:focus {
@@ -1235,7 +1235,7 @@ button[type="submit"] {
 .button:hover,
 input[type="submit"]:hover,
 button[type="submit"]:hover {
-  background-color: #333;
+  background-color: var(--darktext);
 }
 .slick-slider {
   display: block;
@@ -1350,7 +1350,7 @@ button[type="submit"]:hover {
 .slick-prev:focus,
 .slick-next:hover,
 .slick-next:focus {
-  background: #bfbfbf;
+  background: var(--lighttext);
   color: transparent;
   outline: none;
 }
@@ -1412,7 +1412,7 @@ button[type="submit"]:hover {
   margin: 24px 0 0 20px;
 }
 #navigation-bar #mobile-nav-toggle .bar {
-  background-color: #333;
+  background-color: var(--darktext);
   display: block;
   margin-bottom: 3px;
   width: 20px;
@@ -1435,7 +1435,7 @@ button[type="submit"]:hover {
   float: left;
 }
 #navigation-bar .nav-list > .menu-item > a {
-  color: #333;
+  color: var(--darktext);
   display: block;
   font-family: "Ubuntu", sans-serif;
   font-size: 14px;
@@ -1447,7 +1447,7 @@ button[type="submit"]:hover {
   text-transform: uppercase;
 }
 #navigation-bar .nav-list > .menu-item > a:after {
-  background-color: #333;
+  background-color: var(--darktext);
   content: "";
   height: 2px;
   opacity: 0;
@@ -1485,7 +1485,7 @@ button[type="submit"]:hover {
   background-color: #fff;
 }
 #hero {
-  background-color: #333;
+  background-color: var(--darktext);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1493,7 +1493,7 @@ button[type="submit"]:hover {
   position: relative;
 }
 #hero #hero-mask {
-  background-color: #333;
+  background-color: var(--darktext);
   opacity: 0.4;
   position: absolute;
   top: 0;
@@ -1540,7 +1540,7 @@ button[type="submit"]:hover {
   background-color: #52b3d9;
 }
 #hero .cat-links > a:hover {
-  background-color: #333;
+  background-color: var(--darktext);
 }
 #featured-posts {
   opacity: 0;
@@ -1552,7 +1552,7 @@ button[type="submit"]:hover {
   transition: opacity 0.2s ease;
 }
 #featured-posts .featured-post {
-  background-color: #333;
+  background-color: var(--darktext);
   background-position: center;
   background-size: cover;
   margin: 10px;
@@ -1642,13 +1642,14 @@ button[type="submit"]:hover {
   margin: 30px 0 15px;
 }
 .post .entry-meta {
-  color: #bfbfbf;
+  color: var(--lighttext);
   margin-bottom: 20px;
 }
 .post .entry-meta .author-image {
   float: left;
   width: 35px;
   height: 35px;
+  object-fit: cover;
   border-radius: 50%;
 }
 .post .entry-meta .right {
@@ -1666,7 +1667,7 @@ button[type="submit"]:hover {
   padding-left: 5px;
 }
 .post .entry-meta .author-name a {
-  color: #bfbfbf;
+  color: var(--lighttext);
 }
 .post .entry-meta .author-name a:hover {
   color: #52b3d9;
@@ -1725,7 +1726,7 @@ button[type="submit"]:hover {
   font-size: 20px;
 }
 .post .entry-title > a {
-  color: #333;
+  color: var(--darktext);
 }
 .post .entry-footer {
   margin-top: 15px;
@@ -1742,7 +1743,7 @@ button[type="submit"]:hover {
   clear: both;
 }
 .cat-links > a {
-  background-color: #bfbfbf;
+  background-color: var(--lighttext);
   color: #fff;
   display: inline-block;
   float: left;
@@ -1760,7 +1761,7 @@ button[type="submit"]:hover {
   display: none;
 }
 .cat-links > a:hover {
-  background-color: #333;
+  background-color: var(--darktext);
 }
 .post-template .post {
   margin-bottom: 0;
@@ -1802,13 +1803,13 @@ button[type="submit"]:hover {
   margin-bottom: 15px;
 }
 #about-author .author-name > a {
-  color: #333;
+  color: var(--darktext);
 }
 #about-author .author-bio {
   margin-bottom: 0;
 }
 #about-author .author-meta > span {
-  color: #bfbfbf;
+  color: var(--lighttext);
   display: inline-block;
   font-family: "Ubuntu", sans-serif;
   font-size: 14px;
@@ -1817,7 +1818,7 @@ button[type="submit"]:hover {
   padding-top: 15px;
 }
 #about-author .author-meta a {
-  color: #bfbfbf;
+  color: var(--lighttext);
 }
 #about-author .author-meta a:hover {
   color: #52b3d9;
@@ -1842,7 +1843,7 @@ button[type="submit"]:hover {
   margin-bottom: 15px;
 }
 #related-posts .entry-title > a {
-  color: #333;
+  color: var(--darktext);
 }
 #related-posts .entry-title > a:hover {
   color: #52b3d9;
@@ -1869,7 +1870,7 @@ button[type="submit"]:hover {
 }
 .navigation.post-navigation .nav-previous > a,
 .navigation.post-navigation .nav-next > a {
-  background-color: #bfbfbf;
+  background-color: var(--lighttext);
   color: #fff;
   display: block;
   font-family: "Ubuntu", sans-serif;
@@ -1883,7 +1884,7 @@ button[type="submit"]:hover {
 }
 .navigation.post-navigation .nav-previous > a:hover,
 .navigation.post-navigation .nav-next > a:hover {
-  background-color: #333;
+  background-color: var(--darktext);
 }
 .author-template .post .entry-meta {
   margin-bottom: 3px;
@@ -1914,8 +1915,8 @@ button[type="submit"]:hover {
   display: inline-block;
 }
 .social-links li > a {
-  border: 2px solid #bfbfbf;
-  color: #bfbfbf !important;
+  border: 2px solid var(--lighttext);
+  color: var(--lighttext) !important;
   display: block;
   font-size: 13px;
   line-height: 28px;
@@ -1929,7 +1930,7 @@ button[type="submit"]:hover {
   transition: all 0.2s ease;
 }
 .social-links li > a:hover {
-  background-color: #bfbfbf;
+  background-color: var(--lighttext);
   color: #fff !important;
 }
 .widget {
@@ -1945,7 +1946,7 @@ button[type="submit"]:hover {
   padding: 0;
 }
 .widget ul li > a {
-  color: #333;
+  color: var(--darktext);
   font-family: "Ubuntu", sans-serif;
 }
 .widget ul li > a:hover {
@@ -1960,7 +1961,7 @@ button[type="submit"]:hover {
   text-transform: uppercase;
 }
 .widget .widget-title:after {
-  background-color: #333;
+  background-color: var(--darktext);
   content: "";
   position: absolute;
   bottom: -2px;
@@ -1981,7 +1982,7 @@ button[type="submit"]:hover {
   margin-bottom: 0;
 }
 .widget.widget-posts-list .thumbnail-link {
-  background-color: #bfbfbf;
+  background-color: var(--lighttext);
   color: #fff;
   display: block;
   float: left;
@@ -1996,7 +1997,7 @@ button[type="submit"]:hover {
   transition: background-color 0.2s ease;
 }
 .widget.widget-posts-list .thumbnail-link:hover {
-  background-color: #333;
+  background-color: var(--darktext);
 }
 .widget.widget-posts-list .entry-content {
   margin: -1px 0 0 75px;
@@ -2006,7 +2007,7 @@ button[type="submit"]:hover {
   margin-bottom: 2px;
 }
 .widget.widget-posts-list .entry-title > a {
-  color: #333;
+  color: var(--darktext);
 }
 .widget.widget-posts-list .entry-title > a:hover {
   color: #52b3d9;
@@ -2071,8 +2072,8 @@ button[type="submit"]:hover {
   margin: 5px;
 }
 #colophon {
-  background-color: #333;
-  color: #bfbfbf;
+  background-color: var(--darktext);
+  color: var(--lighttext);
   font-family: "Ubuntu", sans-serif;
 }
 #colophon a {
@@ -2096,7 +2097,7 @@ button[type="submit"]:hover {
 }
 #colophon .widget li > a {
   border-bottom: 1px solid #3b3b3b;
-  color: #bfbfbf;
+  color: var(--lighttext);
   display: block;
   padding: 8px 0;
 }
@@ -2119,7 +2120,7 @@ button[type="submit"]:hover {
 }
 #colophon .widget.widget-tags a {
   background-color: #3b3b3b;
-  color: #bfbfbf;
+  color: var(--lighttext);
 }
 #colophon .widget.widget-tags a:hover {
   background-color: #2e2e2e;
@@ -2271,7 +2272,7 @@ button[type="submit"]:hover {
   position: relative;
 }
 .bordered-title:after {
-  background-color: #bfbfbf;
+  background-color: var(--lighttext);
   content: "";
   position: absolute;
   bottom: 0;
@@ -2510,7 +2511,7 @@ button[type="submit"]:hover {
 }
 @media (max-width: 991px) {
   #navigation-bar #main-navigation {
-    background-color: #333;
+    background-color: var(--darktext);
     display: none;
     max-height: 300px;
     overflow-y: scroll;
@@ -2520,13 +2521,13 @@ button[type="submit"]:hover {
     left: 0;
   }
   #navigation-bar .nav-list {
-    border: 30px solid #333;
+    border: 30px solid var(--darktext);
   }
   #navigation-bar .nav-list > .menu-item {
     float: none;
   }
   #navigation-bar .nav-list > .menu-item > a {
-    color: #bfbfbf;
+    color: var(--lighttext);
     line-height: 40px;
   }
   #navigation-bar .nav-list > .menu-item > a:hover {
@@ -2561,6 +2562,8 @@ button[type="submit"]:hover {
     float: left;
     margin-bottom: 0;
     width: 230px;
+    height: 170px;
+    object-fit: cover;
   }
   .post-list:not(.featured) .entry-content,
   .post-list:not(.featured) .entry-footer {

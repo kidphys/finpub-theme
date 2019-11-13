@@ -1,208 +1,142 @@
 {{#if fee}}
 
 </script>
-<div id="payment">
-    <section class="section">
-        <div class="is-fluid">
-            <div class="columns">
-                <div class="column">
-                    <div class="card">
-                        {{#if @member}}
-                        <script>
-                            function sanitize_email(email) {
-                                return email.replace("@", " at ").replace(".", " ");
-                            }
+<div id="payment" class="fp-box">
+    <div class="card">
+        {{#if @member}}
+        <script>
+            function sanitize_email(email) {
+                return email.replace("@", " at ").replace(".", " ");
+            }
 
-                            function changePaymentType(e) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                if (e.currentTarget.className.indexOf('is-active') < 0) {
-                                    // set it as active.
-                                    var dom = e.currentTarget,
-                                        parent = e.currentTarget.parentElement,
-                                        active = parent.querySelector('.is-active');
-                                    active.className = active.className.replace('is-active', '');
-                                    dom.className += ' is-active';
-                                    var payType = dom.dataset['paymentType'];
-                                    var allPayments = document.querySelectorAll('.payment-body');
-                                    for (var i = 0; i < allPayments.length; i++) {
-                                        var p = allPayments[i];
-                                        // if (p.className.indexOf(payType.toLowerCase()) < 0)
-                                        //     p.style.display = 'none';
-                                        // else
-                                        //     p.style.display = 'block';
-                                        if (p.dataset['paymentType'] === payType) {
-                                            p.className = p.className.replace('hidden');
-                                        }
-                                        else {
-                                            if (p.className.indexOf('hidden') < 0)
-                                                p.className += ' hidden';
-                                        }
-                                    }
-                                    // Update the value of payment type ?
-                                    // var payTypeInput = document.getElementById('id_payment_type');
-                                    // payTypeInput.value = payType;
+            function changePaymentType(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.currentTarget.className.indexOf('is-active') < 0) {
+                    // set it as active.
+                    var dom = e.currentTarget,
+                        parent = e.currentTarget.parentElement,
+                        active = parent.querySelector('.is-active');
+                    active.className = active.className.replace('is-active', '');
+                    dom.className += ' is-active';
+                    var payType = dom.dataset['paymentType'];
+                    var allPayments = document.querySelectorAll('.payment-body');
+                    for (var i = 0; i < allPayments.length; i++) {
+                        var p = allPayments[i];
+                        // if (p.className.indexOf(payType.toLowerCase()) < 0)
+                        //     p.style.display = 'none';
+                        // else
+                        //     p.style.display = 'block';
+                        if (p.dataset['paymentType'] === payType) {
+                            p.className = p.className.replace('hidden');
+                        }
+                        else {
+                            if (p.className.indexOf('hidden') < 0)
+                                p.className += ' hidden';
+                        }
+                    }
+                    // Update the value of payment type ?
+                    // var payTypeInput = document.getElementById('id_payment_type');
+                    // payTypeInput.value = payType;
 
-                                    // Update the transfer description
-                                    var transferPrefix = document.getElementById('transfer_prefix');
-                                    var email = sanitize_email('{{@member.email}}');
-                                    transferPrefix.innerText = email;
-                                }
-                                return false;
-                            }
-                        </script>
-                        <div class="card-content" id="payment-content-authenticated" >
-                            <div class="payment">
-                                <br>
-                                <p>Đây là bài viết có nội dung trả tiền, vui lòng thanh toán theo các thông tin hướng dẫn dưới đây</p>
-                                <p class="is-size-4 has-text-grey">Ngay sau khi nhận được thanh toán, chúng tôi sẽ gửi xác nhận vào điện thoại của bạn</p>
-                            </div>
-                            <div class="tabs">
-                            <ul>
-                                <li data-payment-type="momo" class="is-active is-size-5 has-text-weight-bold" onclick="return changePaymentType(event)">
-                                    <a>Momo</a>
-                                </li>
-                                <li  data-payment-type="transfer" class="is-size-5 has-text-weight-bold" onclick="return changePaymentType(event)">
-                                    <a>Chuyển khoản</a>
-                                </li>
+                    // Update the transfer description
+                    var transferPrefix = document.getElementById('transfer_prefix');
+                    var email = sanitize_email('{{@member.email}}');
+                    transferPrefix.innerText = email;
+                }
+                return false;
+            }
+        </script>
+        <div class="card-content" id="payment-content-authenticated" >
+            <div class="payment">
+                <p class="txt-center">Đây là bài viết có nội dung trả tiền, vui lòng thanh toán theo các thông tin hướng dẫn dưới đây. Ngay sau khi nhận được thanh toán, chúng tôi sẽ gửi xác nhận vào điện thoại của bạn.</p>
+            </div>
+            <div class="tabs">
+            <ul>
+                <li data-payment-type="momo" class="is-active is-size-5 has-text-weight-bold" onclick="return changePaymentType(event)">
+                    <a>Momo</a>
+                </li>
+                <li  data-payment-type="transfer" class="is-size-5 has-text-weight-bold" onclick="return changePaymentType(event)">
+                    <a>Chuyển khoản</a>
+                </li>
 
-                                <li data-payment-type="card" class="hidden" onclick="return changePaymentType(event)">
-                                    <a>Card</a>
-                                </li>
-                            </ul>
-                            </div>
-                            <div class="payment-body transfer-payment hidden" data-payment-type="transfer">
-                                <div class="level is-size-5">
-                                    Chuyển khoản với nội dung sau
-                                </div>
-                                <div class="level">
-                                    <div class="level-left">
-                                        <div class="">
-                                            <p class="bank_transfer__label is-size-5 has-text-grey">Số tài khoản</p>
-                                            <p class="bank_transfer__value is-size-4" id="bank_account">0123557686896</p>
-                                        </div>
-                                    </div>
-                                    <div class="level-right">
-                                        <a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_account"><i class="fas fa-copy tt-clickable"></i></a>
-                                    </div>
-                                </div>
-                                <div class="level">
-                                    <div class="level-left">
-                                        <div class="">
-                                            <p class="bank_transfer__label is-size-5 has-text-grey">Tên chủ tài khoản</p>
-                                            <p class="bank_transfer__value is-size-4" id="bank_owner_name">Phạm Hà My</p>
-                                        </div>
-                                    </div>
-                                    <div class="level-right">
-                                        <a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_owner_name"><i class="fas fa-copy tt-clickable"></i></a>
-                                    </div>
-                                </div>
-                                <div class="level">
-                                    <div class="level-left">
-                                        <div class="">
-                                            <p class="bank_transfer__label is-size-5 has-text-grey">Ngân hàng</p>
-                                            <p class="bank_transfer__value is-size-4">BIDV</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="level">
-                                    <div class="level-left">
-                                        <div class="">
-                                            <p class="bank_transfer__label is-size-5 has-text-grey-light">Số tiền</p>
-                                            <p class="bank_transfer__value is-size-4">{{fee}},000</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="level">
-                                    <div class="level-left">
-                                        <div class="">
-                                            <p class="bank_transfer__label is-size-5 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
-                                            <p class="bank_transfer__value is-size-4 has-text-weight-bold is-uppercase" id="transfer_description">
-                                                <span>FP {{fp_post_code}} </span><span id="transfer_prefix"></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="level-right">
-                                        <a class="btn icon is-medium has-text-grey-light tt-copy-btn" title="copy" data-clipboard-target="#transfer_description"><i class="fas fa-copy tt-clickable"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="payment-body momo-payment " data-payment-type="momo">
-                                <div class="level is-size-4 has-text-grey">
-                                    Mở app MoMo, quét mã QR hoặc nhập số điện thoại phía dưới để thanh toán.
-                                </div>
+                <li data-payment-type="card" class="hidden" onclick="return changePaymentType(event)">
+                    <a>Card</a>
+                </li>
+            </ul>
+            </div>
+            <div class="payment-body transfer-payment hidden" data-payment-type="transfer">
+                <div class="txt-center">
+                    Chuyển khoản với nội dung sau
+                </div>
+                <div class="fp-center">
+                    <table class="payment-info">
+                        <tbody>
+                            <tr>
+                                <th>Số tài khoản</th><td>0123557686896 </td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_account"><i class="fas fa-copy tt-clickable"></i></a> </td>
+                            </tr>
+                            <tr>
+                                <th>Chủ tài khoản</th><td>Phạm Hà My </td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_owner_name"><i class="fas fa-copy tt-clickable"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th>Ngân hàng</th><td>BIDV</td><td></td>
+                            </tr>
+                            <tr>
+                                <th>Số tiền</th><td>{{fee}},000</td><td></td>
+                            </tr>
+                            <tr>
+                                <th>Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></th><td><span>FP {{fp_post_code}} </span><span id="transfer_prefix"></span></td><td>
+                                    <a class="btn icon is-medium has-text-grey-light tt-copy-btn" title="copy" data-clipboard-target="#transfer_description"><i class="fas fa-copy tt-clickable"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+            <div class="payment-body momo-payment " data-payment-type="momo">
+                <div class="txt-center">
+                    <p>Mở app MoMo, quét mã QR hoặc nhập số điện thoại phía dưới để thanh toán.</p>
+                </div>
 
-                                <div class="columns">
-                                    <div class="column">
-                                        <div class="level">
-                                            <div class="level-left">
-                                                <div class="">
-                                                    <p class="bank_transfer__label is-size-5 has-text-grey">Người nhận</p>
-                                                    <p class="bank_transfer__value is-size-4">Phạm Hà My</p>
-                                                </div>
-                                            </div>
-                                            <div class="level-right"><!--
-                                                <a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a> -->
-                                                {{!-- <img src="https://i.ibb.co/C7T5thb/qr-code.jpg" class="image" /> --}}
-                                            </div>
-                                        </div>
-                                        <div class="level">
-                                            <div class="level-left">
-                                                <div class="">
-                                                    <p class="bank_transfer__label is-size-5 has-text-grey">Số điện thoại</p>
-                                                    <p class="bank_transfer__value is-size-4" id="momo_owner_phone">0394919200</p>
-                                                </div>
-                                            </div>
-                                            <div class="level-right">
-                                                <a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#momo_owner_phone"><i class="fas fa-copy tt-clickable"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="level">
-                                            <div class="level-left">
-                                                <div class="">
-                                                    <p class="bank_transfer__label is-size-5 has-text-grey-light">Số tiền</p>
-                                                    <p class="bank_transfer__value is-size-4">{{fee}},000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="level">
-                                            <div class="level-left">
-                                                <div class="">
-                                                    <p class="bank_transfer__label is-size-5 has-text-grey">Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></p>
-                                                    <p class="bank_transfer__value is-size-4 has-text-weight-bold is-uppercase">
-                                                        FP {{fp_post_code}}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="level-right">
-                                                <a class="btn icon is-medium has-text-grey-light tt-copy-btn" title="copy" data-clipboard-text="finpub {{fp_post_code}}"><i class="fas fa-copy tt-clickable"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column">
-                                        <div class="level">
-                                            <div class="level-right image"><!--
-                                                <a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a> -->
-                                                <img src="https://i.ibb.co/C7T5thb/qr-code.jpg" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input id="clipboard" style="position: absolute; left: -9999px" readonly />
+                <div class="columns">
+                    <div class="column">
+                        <table class="payment-info">
+                            <tbody>
+                                <tr>
+                                    <th>Người nhận</th><td>Phạm Hà My</td>
+                                </tr>
+                                <tr>
+                                    <th>Điện thoại</th><td>0394919200</td>
+                                </tr>
+                                <tr>
+                                    <th>Số tiền</th><td>{{fee}},000</td>
+                                </tr>
+                                <tr>
+                                    <th>Nội dung</th><td>FP {{fp_post_code}}</td>
+                                </tr>
+                            </tbody>
+                        </table>                        
+                    </div>
+                    <div class="column">
+                        <div class="level">
+                            <div class="level-right image"><!--
+                                <a class="icon is-medium has-text-grey-light tt-copy-btn" title="copy"  onclick="return copyText(event)"><i class="fas fa-copy tt-clickable"></i></a> -->
+                                <img src="https://i.ibb.co/C7T5thb/qr-code.jpg" />
                             </div>
                         </div>
-                        {{else}}
-                        <div class="card-content" id="payment-content-unauthenticated" >
-                            <div>Đây là nội dung có trả tiền. Xin hãy
-                                <a href="#subscribe">đăng nhập</a> để xem thông tin thanh toán
-                            </div>
-                        </div>
-                        {{/if}}
                     </div>
                 </div>
+                <input id="clipboard" style="position: absolute; left: -9999px" readonly />
             </div>
         </div>
-    </section>
+        {{else}}
+        <div class="card-content" id="payment-content-unauthenticated" >
+            <div>Đây là nội dung có trả tiền. Xin hãy
+                <a href="#subscribe">đăng nhập</a> để xem thông tin thanh toán
+            </div>
+        </div>
+        {{/if}}
+    </div>
 </div>
 {{/if}}
