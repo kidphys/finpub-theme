@@ -9,8 +9,8 @@
 	<meta name="HandheldFriendly" content="True">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  	<link rel="shortcut icon" href="{{asset "/favicon.ico"}}">  
-  	
+  	<link rel="shortcut icon" href="{{asset "/favicon.ico"}}">
+
 	<link rel="stylesheet" href="{{asset "css/screen.css"}}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CUbuntu:400,700">
 	<style>
@@ -61,6 +61,13 @@
 			display: none;
 		}
 
+		.has-text-grey-light {
+			color: lightgrey
+		}
+		.has-text-weight-light {
+			font-weight: lighter
+		}
+
 		{{!-- hiding login button in smaller screen --}}
 		@media (max-width: 991px) {
 			#authentication {
@@ -81,12 +88,12 @@
 	{{ghost_head}}
 	<link rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-	
+
 	{{#is "post"}}
 		{{#post}}
 			{{#if fee}}
 			<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">-->
-			  	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>   			  				  
+			  	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
 		  	{{/if}}
 	  	{{/post}}
   	{{/is}}
@@ -128,11 +135,11 @@
 
 		// window.onFinpubReady = function(finpub) {
 
-		// 	var clipboard = new ClipboardJS('.btn'); // initialize clipboard
-		// 	clipboard.on('success', function(e) {
-		// 		alert("Thông tin đã được copy");
-  //   			e.clearSelection();
-		// 	});
+		var clipboard = new ClipboardJS('.btn'); // initialize clipboard
+		clipboard.on('success', function(e) {
+			alert("Thông tin đã được copy");
+			e.clearSelection();
+		});
 
 		// 	window.hasLoggedIn = false;
 		// 	finpub.init(window.location);
@@ -249,9 +256,9 @@
 		// };
 
 	</script>
-	
+
 	{{> facebook}}
-	{{> disqus}}	
+	{{> disqus}}
 
 </body>
 </html>

@@ -73,10 +73,10 @@
                     <table class="payment-info">
                         <tbody>
                             <tr>
-                                <th>Số tài khoản</th><td>0123557686896 </td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_account"><i class="fas fa-copy tt-clickable"></i></a> </td>
+                                <th>Số tài khoản</th><td id="bank_account">0123557686896 </td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_account"><i class="fas fa-copy tt-clickable"></i></a> </td>
                             </tr>
                             <tr>
-                                <th>Chủ tài khoản</th><td>Phạm Hà My </td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_owner_name"><i class="fas fa-copy tt-clickable"></i></a></td>
+                                <th>Chủ tài khoản</th><td id="bank_owner_name">Phạm Hà My </td><td><a class="icon is-medium has-text-grey-light tt-copy-btn btn" title="copy" data-clipboard-target="#bank_owner_name"><i class="fas fa-copy tt-clickable"></i></a></td>
                             </tr>
                             <tr>
                                 <th>Ngân hàng</th><td>BIDV</td><td></td>
@@ -85,14 +85,14 @@
                                 <th>Số tiền</th><td>{{fee}},000</td><td></td>
                             </tr>
                             <tr>
-                                <th>Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></th><td><span>FP {{fp_post_code}} </span><span id="transfer_prefix"></span></td><td>
+                                <th>Nội dung chuyển khoản <i class="fas fa-exclamation-circle has-text-primary"></i></th><td id="transfer_description"><span>FP {{fp_post_code}} </span><span id="transfer_prefix"></span></td><td>
                                     <a class="btn icon is-medium has-text-grey-light tt-copy-btn" title="copy" data-clipboard-target="#transfer_description"><i class="fas fa-copy tt-clickable"></i></a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                
+
             </div>
             <div class="payment-body momo-payment " data-payment-type="momo">
                 <div class="txt-center">
@@ -116,7 +116,7 @@
                                     <th>Nội dung</th><td>FP {{fp_post_code}}</td>
                                 </tr>
                             </tbody>
-                        </table>                        
+                        </table>
                     </div>
                     <div class="column">
                         <div class="level">
