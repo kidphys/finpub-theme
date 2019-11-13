@@ -499,6 +499,9 @@ table.payment-info th, table.payment-info td {
     margin-top: 25px;
     margin-bottom: 15px;
 }
+.article-card__title a {
+    color: var(--darktext);
+}
 
 
 .article-card__desc {
